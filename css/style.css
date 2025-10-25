@@ -100,7 +100,6 @@ header {
 
 /* CORRECCIÓN LOGO: Asegura el tamaño estricto de 100px */
 .logo-img { 
-    content: url('../img/logo-claro.jpg'); 
     width: 100px !important; 
     max-width: 100px !important; 
     height: auto; 
