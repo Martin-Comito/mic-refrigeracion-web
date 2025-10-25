@@ -12,7 +12,10 @@
         <div class="logo">
            <a href="index.html"><img src="img/logo-claro.jpg" alt="Logo MIC Refrigeración" class="logo-img"></a>
         </div>
-        <nav>
+        <button class="nav-toggle" aria-label="Abrir menú">
+            ☰
+        </button>
+        <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
@@ -21,6 +24,11 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
+        <div class="theme-switcher">
+            <button id="theme-toggle" aria-label="Cambiar tema">
+                🌙
+            </button>
+        </div>
          <div class="header-contact">
              <a href="https://wa.me/5492273407170" target="_blank">WhatsApp: 2273-407170</a>
         </div>
@@ -42,15 +50,7 @@
 
         <section id="instalaciones">
             <h2 class="animate-fade-in">Instalaciones de Aires Acondicionados</h2>
-            <p class="animate-fade-in">Instalamos todo tipo de equipos: Split Pared, Cassette, Piso Techo y Sistemas Centrales por Conductos (tecnologías On/Off e Inverter). Nuestro proceso incluye:</p>
-            <ul>
-                <li class="animate-fade-in" style="animation-delay: 0.1s;">Fijación segura de unidades interior y exterior.</li>
-                <li class="animate-fade-in" style="animation-delay: 0.2s;">Conexionado de cañerías con pestañado preciso.</li>
-                <li class="animate-fade-in" style="animation-delay: 0.3s;">Realización de vacío con bomba para eliminar humedad y aire del circuito.</li>
-                <li class="animate-fade-in" style="animation-delay: 0.4s;">Control de fugas con nitrógeno (si es necesario).</li>
-                <li class="animate-fade-in" style="animation-delay: 0.5s;">Conexiones eléctricas seguras y prolijas.</li>
-                <li class="animate-fade-in" style="animation-delay: 0.6s;">Puesta en marcha y control de funcionamiento.</li>
-            </ul>
+            <p class="animate-fade-in">Instalamos todo tipo de equipos: Split Pared, Cassette, Piso Techo y Sistemas Centrales por Conductos (tecnologías On/Off e Inverter). Realizamos vacío con bomba, control de fugas y garantizamos una instalación prolija y segura.</p>
             <p class="animate-fade-in important-note"><strong>Importante:</strong> La instalación por Técnico Matriculado (CAIM N° 29.235.676) mantiene la garantía oficial del fabricante. Además, ofrecemos nuestra <strong>Garantía MIC de 2 años</strong> sobre la mano de obra de instalación.</p>
             <div class="gallery">
                 <figure class="animate-fade-in">
@@ -80,7 +80,7 @@
                 <li class="animate-fade-in" style="animation-delay: 0.4s;">Verificación de componentes eléctricos y drenajes.</li>
                 <li class="animate-fade-in" style="animation-delay: 0.5s;">Servicio de seguimiento y mantenimientos preventivos programados.</li>
             </ul>
-             </section>
+        </section>
 
          <section id="insumos">
             <h2 class="animate-fade-in">Venta de Insumos</h2>
@@ -91,12 +91,18 @@
     </main>
 
     <footer>
-        <p>© 2025 MIC Refrigeración | Técnico Matriculado CAIM N° 29.235.676</p>
-         <div class="footer-links">
+        <p class="social-intro">Seguinos en nuestras redes para saber más sobre nosotros y no te pierdas ningún consejo:</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1Pe97M5frK/" target="_blank" aria-label="Seguinos en Facebook">Facebook</a>
+            <a href="https://www.instagram.com/micrefrigeracion/" target="_blank" aria-label="Seguinos en Instagram">Instagram</a>
+        </div>
+        <p class="copyright">© 2025 MIC Refrigeración | Técnico Matriculado CAIM N° 29.235.676</p>
+        <div class="footer-contact">
             <a href="https://wa.me/5492273407170" target="_blank">WhatsApp: 2273-407170</a> |
-            <a href="https://www.instagram.com/micrefrigeracion/" target="_blank">Instagram: @micrefrigeracion</a> |
             <a href="mailto:matiasivancordoba.mic@gmail.com">matiasivancordoba.mic@gmail.com</a>
         </div>
     </footer>
-    </body>
+
+    <script src="js/script.js" defer></script>
+</body>
 </html>
