@@ -6,10 +6,8 @@ const navMenu = document.querySelector(".nav-menu");
 
 if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
-        // Toggle (añade/quita) la clase para mostrar/ocultar el menú
         navMenu.classList.toggle("nav-menu_visible");
 
-        // Lógica de accesibilidad (aria-expanded)
         if (navMenu.classList.contains("nav-menu_visible")) {
             navToggle.setAttribute("aria-label", "Cerrar menú");
             navToggle.setAttribute("aria-expanded", "true");
@@ -22,7 +20,6 @@ if (navToggle && navMenu) {
     // Cierra el menú al hacer clic en un enlace (en móvil)
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            // Solo ejecuta si la pantalla es <= 768px (móvil) y el menú está visible
             if (window.innerWidth <= 768 && navMenu.classList.contains('nav-menu_visible')) {
                 navMenu.classList.remove('nav-menu_visible');
                 navToggle.setAttribute("aria-label", "Abrir menú");
@@ -38,30 +35,23 @@ const themeToggleButton = document.getElementById('theme-toggle');
 const bodyElement = document.body;
 const logoElement = document.querySelector('.logo-img');
 
-const sunIcon = '🌙'; // Icono para modo claro
-const moonIcon  = '☀️'; // Icono para modo oscuro
+const sunIcon = '☀️'; 
+const moonIcon = '🌙'; 
 
-/**
- * Aplica el tema, cambia el logo y guarda la preferencia.
- * @param {string} theme - 'light' o 'dark'.
- */
 function applyTheme(theme) {
     if (theme === 'dark') {
         bodyElement.classList.add('dark-mode');
-        themeToggleButton.innerHTML = moonIcon; // Muestra la LUNA
+        themeToggleButton.innerHTML = moonIcon; 
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo claro');
-        // CORRECCIÓN DEL LOGO: Forzar el cambio de SRC
         if (logoElement) {
-            // Utilizamos .src directamente para forzar la carga del logo oscuro
             logoElement.src = 'img/logo-oscuro.jpg'; 
             logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Oscuro');
-        } 
+        }
         localStorage.setItem('theme', 'dark');
     } else {
         bodyElement.classList.remove('dark-mode');
-        themeToggleButton.innerHTML = sunIcon; // Muestra el SOL
+        themeToggleButton.innerHTML = sunIcon; 
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo oscuro');
-        // CORRECCIÓN DEL LOGO: Forzar el cambio de SRC
         if (logoElement) {
             logoElement.src = 'img/logo-claro.jpg'; 
             logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Claro');
@@ -76,55 +66,58 @@ const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 let initialTheme = 'light';
 if (savedTheme) {
-    initialTheme = savedTheme; // Usa la preferencia guardada del usuario
+    initialTheme = savedTheme; 
 } else if (prefersDark) {
-    initialTheme = 'dark'; // Si no hay guardada, usa la del sistema
+    initialTheme = 'dark';
 }
-applyTheme(initialTheme);
+
+if (bodyElement && themeToggleButton) {
+    applyTheme(initialTheme);
+}
 
 
 // 2. Event listener para el botón de cambio de tema
 if (themeToggleButton) {
     themeToggleButton.addEventListener('click', () => {
-        // Alterna entre el tema actual y el opuesto
         const newTheme = bodyElement.classList.contains('dark-mode') ? 'light' : 'dark';
         applyTheme(newTheme);
     });
 }
+
+
 // --- Funcionalidad Carruseles ---
 
 document.addEventListener('DOMContentLoaded', () => {
+    
     // Selecciona todos los botones de navegación de carrusel
     const prevButtons = document.querySelectorAll('.prev-button');
     const nextButtons = document.querySelectorAll('.next-button');
 
-    // Función para manejar el movimiento del carrusel
+    // Función para manejar el movimiento del carrusel (CORREGIDA)
     function moveSlide(carouselId, direction) {
         const slide = document.querySelector(`.carousel-slide[data-carousel-id="${carouselId}"]`);
         if (!slide) return;
 
-        // Calcula el índice actual del slide
         let currentItemIndex = parseInt(slide.getAttribute('data-current-index') || 0);
-        const totalItems = slide.children.length;
+        const totalItems = slide.children.length; // 4 items
 
-        // Calcula el nuevo índice
         let newIndex = currentItemIndex + direction;
 
-        // Manejo de límites (loop infinito)
+        // 1. MANEJO DE LÍMITES (LOOP)
         if (newIndex < 0) {
-            newIndex = totalItems - 1;
+            newIndex = totalItems - 1; // Mueve al último item
         } else if (newIndex >= totalItems) {
-            newIndex = 0;
+            newIndex = 0; // Mueve al primer item
         }
 
-        // Calcula la posición de desplazamiento
-        const itemWidth = slide.clientWidth / totalItems; // El ancho de un solo item
-        const scrollAmount = newIndex * itemWidth;
+        // 2. CÁLCULO DEL DESPLAZAMIENTO DEFINITIVO
+        // (4 items) / (totalItems) * 100 = 25% por item
+        const percentageToMove = (newIndex / totalItems) * 100;
 
-        // Aplica el desplazamiento usando CSS Transform
-        slide.style.transform = `translateX(-${newIndex * 100}%)`;
+        // 3. APLICACIÓN DEL DESPLAZAMIENTO
+        slide.style.transform = `translateX(-${percentageToMove}%)`;
 
-        // Actualiza el índice en el atributo de datos
+        // 4. ACTUALIZA EL ÍNDICE
         slide.setAttribute('data-current-index', newIndex);
     }
 

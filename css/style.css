@@ -1,3 +1,8 @@
+/* |--------------------------------------------------------------------------
+| CSS MIC REFRIGERACIÓN - ESTILOS PRINCIPALES, RESPONSIVE Y DARK MODE
+|--------------------------------------------------------------------------
+*/
+
 /* --- Variables de Color --- */
 :root {
   --bg-light: #f8f9fa; /* Fondo general muy claro */
@@ -10,16 +15,16 @@
   --border-light: #dee2e6; /* Bordes claros */
   --text-muted: #6c757d; /* Texto grisáceo */
 
-  /* Colores modo oscuro */
-  --bg-dark: #111827;
-  --bg-content-dark: #1f2937;
-  --text-dark: #f9fafb;
-  --primary-blue-dark: #60a5fa; /* Azul más brillante para modo oscuro */
-  --secondary-blue-dark: #3b82f6;
-  --heading-blue-dark: #93c5fd;
-  --link-blue-dark: #60a5fa;
-  --border-dark: #4b5563;
-  --text-muted-dark: #9ca3af;
+  /* Colores modo oscuro: Gris y Azul Suave */
+  --bg-dark: #121212; /* Fondo general muy oscuro (casi negro) */
+  --bg-content-dark: #1e1e1e; /* Fondo contenido (grises oscuros profundos) */
+  --text-dark: #e0e0e0; /* Texto principal (gris muy claro) */
+  --primary-blue-dark: #81d4fa; /* Azul claro brillante (para botones) */
+  --secondary-blue-dark: #4fc3f7; /* Azul más oscuro (hover) */
+  --heading-blue-dark: #90caf9; /* Azul más suave para títulos */
+  --link-blue-dark: #81d4fa;
+  --border-dark: #3a3a3a; /* Bordes (gris oscuro) */
+  --text-muted-dark: #bdbdbd;
 }
 
 /* --- Estilos Generales y Reset --- */
@@ -38,7 +43,29 @@ body {
     font-size: 16px;
 }
 
-/* --- Header y Navegación --- */
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 30px;
+    background: var(--bg-content-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+h1, h2, h3 { margin-bottom: 1rem; color: var(--heading-blue); line-height: 1.3; }
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; border-bottom: 2px solid var(--primary-blue); padding-bottom: 0.3rem; margin-bottom: 1.5rem; }
+h3 { font-size: 1.4em; color: var(--primary-blue); }
+p { margin-bottom: 1rem; color: var(--text-light); }
+ul { margin-bottom: 1rem; margin-left: 1.5rem; }
+a { color: var(--link-blue); text-decoration: none; transition: color 0.3s;}
+a:hover { text-decoration: underline; color: var(--secondary-blue); }
+img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
+section { margin-bottom: 2.5rem; }
+
+
+/* ----------------------------- */
+/* 1. HEADER/NAV        */
+/* ----------------------------- */
 header {
     background: var(--bg-content-light);
     padding: 0.8rem 5%;
@@ -51,130 +78,29 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.logo-img {
-    content: url('../img/logo-claro.jpg');
-    width: 100px;
-    height: auto;
-    display: block;
-}
+.logo-img { content: url('../img/logo-claro.jpg'); width: 100px; height: auto; display: block; }
+.nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--heading-blue); padding: 5px; line-height: 1; z-index: 1001; }
 
-/* --- Botón Hamburguesa --- */
-.nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--heading-blue);
-    padding: 5px;
-    line-height: 1;
-    z-index: 1001; /* Asegura que esté sobre el menú desplegado */
-}
+/* Menú Escritorio */
+.nav-menu ul { list-style: none; display: flex; margin: 0; padding: 0; }
+.nav-menu li { margin-left: 20px; }
+.nav-menu a { font-weight: 500; padding: 5px 0; position: relative; }
+.nav-menu a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background-color: var(--secondary-blue); transition: width 0.3s ease-out; }
+.nav-menu a:hover::after { width: 100%; }
 
-/* --- Menú de Navegación (Escritorio) --- */
-.nav-menu ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-.nav-menu li {
-    margin-left: 20px;
-}
-.nav-menu a {
-    text-decoration: none;
-    color: var(--link-blue);
-    font-weight: 500;
-    padding: 5px 0;
-    position: relative;
-    transition: color 0.3s;
-}
-.nav-menu a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--secondary-blue);
-    transition: width 0.3s ease-out;
-}
-.nav-menu a:hover {
-    color: var(--secondary-blue);
-}
-.nav-menu a:hover::after {
-    width: 100%;
-}
-
-/* --- Botón Cambiar Tema --- */
-.theme-switcher {
-    margin-left: 20px;
-}
+/* Botón Tema */
 #theme-toggle {
-    background: none;
-    border: 1px solid var(--border-light);
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    padding: 6px 7px;
-    line-height: 1;
-    color: var(--text-muted);
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    background: none; border: 1px solid var(--border-light); border-radius: 50%; cursor: pointer; font-size: 1.2rem; padding: 6px 7px; line-height: 1; color: var(--text-muted); transition: background-color 0.3s, color 0.3s, border-color 0.3s; z-index: 1002;
 }
-#theme-toggle:hover {
-    background-color: var(--bg-light);
-    color: var(--primary-blue);
-    border-color: var(--primary-blue);
-}
-.header-contact a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: color 0.3s;
-}
-.header-contact a:hover {
-    color: var(--primary-blue);
-}
+#theme-toggle:hover { background-color: var(--bg-light); color: var(--primary-blue); border-color: var(--primary-blue); }
 
-/* --- Contenido Principal --- */
-main {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 30px;
-    background: var(--bg-content-light);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-h1, h2, h3 {
-    margin-bottom: 1rem;
-    color: var(--heading-blue);
-    line-height: 1.3;
-}
-h1 { font-size: 2.2em; }
-h2 { font-size: 1.8em; border-bottom: 2px solid var(--primary-blue); padding-bottom: 0.3rem; margin-bottom: 1.5rem; }
-h3 { font-size: 1.4em; color: var(--primary-blue); }
+.header-contact a { color: var(--text-muted); font-size: 0.9em; }
 
-/* --- Hero Section (Inicio) --- */
-.hero { text-align: center; margin-bottom: 3rem; }
-.hero img { margin: 0 auto 1.5rem auto; max-height: 450px; width: 100%; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
-.hero h1 { border-bottom: none; margin-bottom: 0.5rem; }
-.hero .subtitle { font-size: 1.5em; color: var(--text-muted); margin-bottom: 1rem; border-bottom: none; }
-.hero p { font-size: 1.1em; max-width: 700px; margin-left: auto; margin-right: auto; }
-
-/* --- Botón CTA --- */
+/* ----------------------------- */
+/* 2. BOTONES CTA       */
+/* ----------------------------- */
 .cta-button {
-    display: inline-block;
-    background-color: var(--primary-blue);
-    color: white !important;
-    padding: 12px 28px;
-    text-decoration: none !important;
-    border-radius: 50px;
-    font-weight: bold;
-    margin-top: 1rem;
-    transition: background-color 0.3s, transform 0.2s;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block; background-color: var(--primary-blue); color: white !important; padding: 12px 28px; text-decoration: none !important; border-radius: 50px; font-weight: bold; margin-top: 1rem; transition: background-color 0.3s, transform 0.2s; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .cta-button:hover { background-color: var(--secondary-blue); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
 .whatsapp-button { background-color: #25D366; }
@@ -182,236 +108,36 @@ h3 { font-size: 1.4em; color: var(--primary-blue); }
 .verification-button { background-color: #ffc107; color: #333 !important; }
 .verification-button:hover { background-color: #e0a800; }
 
-/* --- Resumen Servicios (Inicio) --- */
-.services-summary h2 { text-align: center; }
-.services-summary .service-boxes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-.services-summary .box {
-    background: #fff;
-    border: 1px solid var(--border-light);
-    padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.services-summary .box:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); }
-.services-summary .learn-more { display: inline-block; margin-top: 1rem; font-weight: bold; color: var(--primary-blue); }
-.services-summary .learn-more:hover { color: var(--secondary-blue); text-decoration: underline; }
 
-/* --- Galería de Fotos (Servicios) --- */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-.gallery figure { text-align: center; }
-.gallery figcaption { font-style: italic; margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9em; }
-
-/* --- Nota Importante (Servicios) --- */
-.important-note {
-    background-color: #e7f3ff;
-    border-left: 4px solid var(--primary-blue);
-    padding: 1rem;
-    margin: 1.5rem 0;
-    border-radius: 4px;
-    color: var(--heading-blue);
-}
-
-/* --- Página Sobre Mí --- */
-.about-me { display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
-.about-me img { max-width: 220px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-.about-me .bio { flex: 1; min-width: 300px; }
-.matricula-details { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; margin-bottom: 1.5rem; border: 1px solid var(--border-light); padding: 1.5rem; border-radius: 8px; background-color: #f8f9fa; }
-.matricula-details img { max-width: 280px; height: auto; flex-shrink: 0; }
-.matricula-text { flex: 1; min-width: 250px;}
-.matricula-text p { margin-bottom: 0.5rem; }
-
-/* --- Página Productos --- */
-.product-catalog h2 { border-top: 2px solid var(--border-light); padding-top: 1.5rem; margin-top: 2.5rem; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-.product-card { border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
-.product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); }
-.product-image { max-width: 100%; height: auto; object-fit: contain; border-bottom: 1px solid var(--border-light); background-color: #fff; }
-.product-details { padding: 1.2rem; flex-grow: 1; display: flex; flex-direction: column; }
-.product-details h3 { margin-bottom: 0.8rem; font-size: 1.3em; }
-.product-details p { font-size: 0.95em; color: var(--text-muted); }
-.product-details ul { margin: 1rem 0 1.5rem 1.2rem; font-size: 0.9em; flex-grow: 1;}
-.product-details .cta-button { margin-top: auto; align-self: center; }
-
-/* --- Footer --- */
-footer {
-    background: var(--heading-blue);
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9em;
-}
-.social-intro { margin-bottom: 1rem; font-weight: 500; color: #fff; }
-.social-links { margin-bottom: 1.5rem; }
-.social-links a { color: #fff; margin: 0 15px; font-size: 1.2em; display: inline-block; }
-.social-links a:hover { color: var(--link-blue-dark); text-decoration: none; }
-.copyright { margin-bottom: 0.5rem; font-size: 0.85em; color: rgba(255, 255, 255, 0.7); }
-.footer-contact a { color: rgba(255, 255, 255, 0.8); margin: 0 8px; }
-.footer-contact a:hover { color: #fff; }
-
-
-/* --- Animación Fade-In --- */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in {
-  opacity: 0;
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-/* --- Media Queries para Móviles y Hamburguesa --- */
-@media (max-width: 768px) {
-    body { font-size: 15px; }
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.6em; }
-    header {
-        flex-wrap: wrap; /* Permite que los elementos se envuelvan */
-        padding: 1rem 3%;
-        position: static;
-    }
-    .nav-toggle {
-        display: block; /* Muestra el botón hamburguesa */
-        order: 3; /* Posiciona después del logo y del theme-switcher */
-    }
-    .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; } /* Mueve el botón de tema a la derecha */
-    .header-contact { order: 4; width: 100%; text-align: center; margin-top: 10px; } /* Mueve el contacto debajo */
-
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--bg-content-light);
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        border-top: 1px solid var(--border-light);
-        padding: 0;
-        z-index: 999;
-    }
-    .nav-menu.nav-menu_visible { display: block; }
-    .nav-menu ul { flex-direction: column; align-items: center; }
-    .nav-menu li { margin: 0; width: 100%; }
-    .nav-menu a { display: block; padding: 0.8rem 1rem; width: 100%; border-bottom: 1px solid var(--border-light); text-align: center; }
-    .nav-menu li:last-child a { border-bottom: none; }
-    .nav-menu a::after { display: none; } /* Deshabilita animación underline móvil */
-
-    main { padding: 20px; margin: 15px; }
-
-    .about-me { flex-direction: column; align-items: center; text-align: center; }
-    .matricula-details { flex-direction: column; text-align: center; }
-    .product-grid, .service-boxes, .gallery { grid-template-columns: 1fr; }
-}
-
-
-/* --- Estilos Modo Oscuro Aplicados con JS (Clase body.dark-mode) --- */
-body.dark-mode {
-    background-color: var(--bg-dark); /* #121212 */
-    color: var(--text-dark); /* #e0e0e0 */
-}
-body.dark-mode header {
-    background-color: var(--bg-content-dark); /* #1e1e1e */
-    border-bottom-color: var(--border-dark);
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
-}
-/* No necesitas cambiar el logo aquí porque lo hace el JS */
-
-body.dark-mode .nav-toggle { color: var(--heading-blue-dark); }
-
-body.dark-mode .nav-menu { /* Estilos menú desplegable oscuro */
-    background-color: var(--bg-content-dark);
-    border-top-color: var(--border-dark);
-}
-body.dark-mode .nav-menu a {
-    color: var(--link-blue-dark);
-    border-bottom-color: var(--border-dark);
-}
-
-body.dark-mode main {
-     background: var(--bg-content-dark); /* #1e1e1e */
-     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
-}
- body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
-    color: var(--heading-blue-dark); /* #90caf9 */
- }
- body.dark-mode h2 { border-bottom-color: var(--primary-blue-dark); }
- body.dark-mode p { color: var(--text-dark); }
- body.dark-mode a { color: var(--link-blue-dark); }
-
- body.dark-mode .cta-button { 
-    background-color: var(--primary-blue-dark); /* #81d4fa */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-    color: #121212 !important; /* Texto negro en botón claro */
-}
- body.dark-mode .cta-button:hover { 
-    background-color: var(--secondary-blue-dark); /* #4fc3f7 */
-    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
-}
-
- body.dark-mode .whatsapp-button { background-color: #4CAF50; color: white !important;} /* Verde más neutral */
- body.dark-mode .whatsapp-button:hover { background-color: #43A047;}
- body.dark-mode .verification-button { background-color: #ffb74d; color: #121212 !important;} /* Naranja suave */
- body.dark-mode .verification-button:hover { background-color: #ff9800; }
-
- body.dark-mode .services-summary .box, body.dark-mode .product-card {
-    background: #2c2c2c; /* Grises para cajas */
-    border-color: var(--border-dark);
- }
- body.dark-mode .important-note { 
-    background-color: rgba(144, 202, 249, 0.15); 
-    border-left-color: var(--primary-blue-dark); 
-    color: var(--heading-blue-dark); 
-}
- body.dark-mode .matricula-details { border-color: var(--border-dark); background-color: #2c2c2c; }
-
- body.dark-mode footer {
-    background: #000000; /* Negro puro para el footer */
-    color: var(--text-muted-dark);
- }
- body.dark-mode footer p { color: var(--text-muted-dark); }
- body.dark-mode .footer-links a { color: var(--link-blue-dark); }
- body.dark-mode .footer-links a:hover { color: var(--secondary-blue-dark); }
- 
-/* --- Estilos para Carruseles --- */
+/* ----------------------------- */
+/* 3. CARRUSEL          */
+/* ----------------------------- */
 
 .carousel-container {
     position: relative;
     overflow: hidden;
     width: 100%;
     margin: 20px 0;
-    /* --- CAMBIO CLAVE AQUI: Altura máxima para limitar el tamaño vertical --- */
-    max-height: 400px; /* Definir una altura máxima razonable (ajusta si 400px es mucho) */
+    max-height: 400px; /* Limita la altura del contenedor principal */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-content-light); 
 }
 
 .carousel-slide {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 400%; /* Sigue siendo 4 ítems * 100% */
-    height: 100%; /* Asegura que tome la altura del contenedor */
+    width: 400%; /* El ancho total para 4 imágenes */
+    height: 100%;
 }
 
 .carousel-item {
-    width: 25%;
+    width: 25%; /* Cada ítem ocupa el 25% del carrusel total */
     flex-shrink: 0;
-    
-    /* --- CAMBIOS CLAVE PARA EVITAR ZOOM/RECORTE --- */
-    height: 100%; /* Ocupa el 100% del alto del slide (que es 400px) */
-    object-fit: contain; /* Ajusta la imagen DENTRO del contenedor sin recortar */
-    /* object-fit: cover; <--- ESTO ES LO QUE CAUSABA EL ZOOM/RECORTE */
-    
-    /* El background blanco es para rellenar los espacios si la imagen no es un cuadrado */
-    background-color: var(--bg-content-light); 
+    height: 100%;
+    object-fit: contain; /* CORRECCIÓN: Evita el zoom/recorte, muestra imagen completa */
+    background-color: var(--bg-content-light);
 }
-/* --- Botones de Navegación --- */
 
 .prev-button, .next-button {
     position: absolute;
@@ -427,18 +153,109 @@ body.dark-mode main {
     line-height: 1;
     border-radius: 5px;
     opacity: 0.8;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+.prev-button:hover, .next-button:hover { opacity: 1; background: rgba(0, 0, 0, 0.7); }
+.prev-button { left: 10px; }
+.next-button { right: 10px; }
+
+
+/* ----------------------------- */
+/* 4. PRODUCTOS/SERVICIOS */
+/* ----------------------------- */
+.hero img { max-height: 450px; }
+.services-summary .service-boxes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.services-summary .box { background: #fff; border: 1px solid var(--border-light); padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+.important-note { background-color: #e7f3ff; border-left: 4px solid var(--primary-blue); padding: 1rem; margin: 1.5rem 0; border-radius: 4px; color: var(--heading-blue); }
+
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.product-card { border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); }
+.product-image { max-width: 100%; height: auto; object-fit: contain; border-bottom: 1px solid var(--border-light); background-color: #fff; }
+.product-details { padding: 1.2rem; flex-grow: 1; display: flex; flex-direction: column; }
+
+
+/* ----------------------------- */
+/* 5. FOOTER            */
+/* ----------------------------- */
+footer { background: var(--heading-blue); color: rgba(255, 255, 255, 0.8); font-size: 0.9em; text-align: center; padding: 2rem 1rem; margin-top: 3rem; }
+.social-intro { margin-bottom: 1rem; font-weight: 500; color: #fff; }
+.social-links { margin-bottom: 1.5rem; }
+.social-links a { color: #fff; margin: 0 15px; font-size: 1.2em; display: inline-block; }
+.copyright { margin-bottom: 0.5rem; font-size: 0.85em; color: rgba(255, 255, 255, 0.7); }
+.footer-contact a { color: rgba(255, 255, 255, 0.8); margin: 0 8px; }
+
+
+/* ----------------------------- */
+/* 6. ANIMACIÓN         */
+/* ----------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { opacity: 0; animation: fadeIn 0.8s ease-out forwards; }
+
+
+/* ----------------------------- */
+/* 7. MEDIA QUERIES (Móvil)  */
+/* ----------------------------- */
+@media (max-width: 768px) {
+    body { font-size: 15px; }
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.6em; }
+    header { flex-wrap: wrap; padding: 1rem 3%; position: static; }
+    .nav-toggle { display: block; order: 3; }
+    .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; }
+    .header-contact { order: 4; width: 100%; text-align: center; margin-top: 10px; }
+
+    /* Menú Desplegable */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%; /* CRUCIAL: Se alinea justo debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-content-light);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border-top: 1px solid var(--border-light);
+        padding: 0;
+        z-index: 999;
+    }
+    .nav-menu.nav-menu_visible { display: block; }
+    .nav-menu ul { flex-direction: column; align-items: center; }
+    .nav-menu li { margin: 0; width: 100%; }
+    .nav-menu a { display: block; padding: 0.8rem 1rem; width: 100%; border-bottom: 1px solid var(--border-light); text-align: center; }
+    .nav-menu li:last-child a { border-bottom: none; }
+    .nav-menu a::after { display: none; }
+
+    main { padding: 20px; margin: 15px; }
+    .about-me { flex-direction: column; align-items: center; text-align: center; }
+    .matricula-details { flex-direction: column; text-align: center; }
+    .product-grid, .service-boxes, .gallery { grid-template-columns: 1fr; }
 }
 
-.prev-button:hover, .next-button:hover {
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.7);
-}
 
-.prev-button {
-    left: 10px;
-}
-
-.next-button {
-    right: 10px;
-}
+/* ----------------------------- */
+/* 8. DARK MODE STYLES     */
+/* ----------------------------- */
+body.dark-mode { background-color: var(--bg-dark); color: var(--text-dark); }
+body.dark-mode header { background-color: var(--bg-content-dark); border-bottom-color: var(--border-dark); box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); }
+body.dark-mode .logo-img { content: url('../img/logo-oscuro.jpg'); }
+body.dark-mode .nav-toggle { color: var(--heading-blue-dark); }
+body.dark-mode .nav-menu { background-color: var(--bg-content-dark); border-top-color: var(--border-dark); }
+body.dark-mode .nav-menu a { color: var(--link-blue-dark); border-bottom-color: var(--border-dark); }
+body.dark-mode #theme-toggle { border-color: var(--border-dark); color: var(--text-muted-dark); }
+body.dark-mode #theme-toggle:hover { background-color: var(--bg-dark); color: var(--primary-blue-dark); border-color: var(--primary-blue-dark); }
+body.dark-mode main { background: var(--bg-content-dark); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05); }
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: var(--heading-blue-dark); }
+body.dark-mode h2 { border-bottom-color: var(--primary-blue-dark); }
+body.dark-mode p { color: var(--text-dark); }
+body.dark-mode a { color: var(--link-blue-dark); }
+body.dark-mode .cta-button { background-color: var(--primary-blue-dark); box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); color: #121212 !important; }
+body.dark-mode .whatsapp-button { background-color: #4CAF50; color: white !important;}
+body.dark-mode .verification-button { background-color: #ffb74d; color: #121212 !important;}
+body.dark-mode .services-summary .box, body.dark-mode .product-card { background: #2c2c2c; border-color: var(--border-dark); }
+body.dark-mode .important-note { background-color: rgba(144, 202, 249, 0.15); border-left-color: var(--primary-blue-dark); color: var(--heading-blue-dark); }
+body.dark-mode .matricula-details { border-color: var(--border-dark); background-color: #2c2c2c; }
+body.dark-mode footer { background: #000000; color: var(--text-muted-dark); }
+body.dark-mode .social-links a { color: var(--link-blue-dark); }
