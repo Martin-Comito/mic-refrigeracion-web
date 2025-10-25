@@ -157,68 +157,128 @@ header {
 }
 
 .prev-button, .next-button {
-    position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 10; font-size: 1.5rem; line-height: 1; border-radius: 5px; opacity: 0.8;
+     position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 10; font-size: 1.5rem; line-height: 1; border-radius: 5px; opacity: 0.8;
 }
 .prev-button { left: 10px; }
 .next-button { right: 10px; }
 
 
 /* ----------------------------- */
-/* 5. FOOTER / OTROS      */
+/* 5. DISEÑO DE SERVICIOS EN 3 COLUMNAS (NUEVO) */
+/* ----------------------------- */
+.services-summary h2 { text-align: center; }
+.services-summary .service-boxes {
+    /* IMPLEMENTACIÓN DE 3 COLUMNAS PARA ESCRITORIO */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem;
+}
+.services-summary .box {
+    background: #fff; border: 1px solid var(--border-light); padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.3s, box-shadow 0.3s;
+}
+.services-summary .box:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); }
+.services-summary .learn-more { display: inline-block; margin-top: 1rem; font-weight: bold; color: var(--primary-blue); }
+
+/* ----------------------------- */
+/* 6. VIDEO ASESORAMIENTO (NUEVO) */
+/* ----------------------------- */
+.video-wrapper {
+    max-width: 800px; /* Limita el ancho del video en PC */
+    margin: 0 auto 1.5rem auto; /* Centra el video */
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.video-wrapper video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* ----------------------------- */
+/* 7. FOOTER / OTROS      */
 /* ----------------------------- */
 footer { background: var(--heading-blue); color: rgba(255, 255, 255, 0.8); font-size: 0.9em; text-align: center; padding: 2rem 1rem; margin-top: 3rem; }
 .social-links a { color: #fff; margin: 0 15px; font-size: 1.2em; display: inline-block; }
+.social-links a:hover { color: var(--link-blue-dark); text-decoration: none; }
 
 
 /* ----------------------------- */
-/* 6. MEDIA QUERIES (Móvil)  */
+/* 8. MEDIA QUERIES (Móvil)  */
 /* ----------------------------- */
 @media (max-width: 768px) {
     /* Header Móvil y Menú */
-    .header { position: static; /* Header estático en móvil */ }
+    header { 
+        flex-wrap: wrap; 
+        padding: 1rem 3%; 
+        position: static; 
+     } 
     .nav-toggle { display: block; order: 3; }
     .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; }
 
+     /* Contenedor del Menú: Oculto por defecto */
     .nav-menu {
         display: none;
-        position: fixed; /* CRUCIAL: Fija el menú a la ventana */
+        position: fixed; 
         top: 60px; /* VALOR A AJUSTAR: Altura del header para el despliegue */
         left: 0;
         width: 100%;
-        height: calc(100% - 60px); /* Ocupa el resto de la pantalla */
+        height: calc(100% - 60px);
         overflow-y: auto; 
         background-color: var(--bg-content-light);
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         z-index: 999;
     }
-       .nav-menu.nav-menu_visible { display: block; }
+    .nav-menu.nav-menu_visible { display: block; }
+
+    /* Lista (UL) del Menú: Ocupa el ancho completo */
+    .nav-menu ul { 
+        display: block; /* CRUCIAL: Quita el display: flex de escritorio */
+        flex-direction: column; 
+        align-items: center; 
+        padding: 0;
+    }
+
+    /* Ítem de Lista (LI): Ocupa el ancho completo */
+    .nav-menu li { 
+        margin: 0; 
+        width: 100%; 
+        display: block; /* Asegura el apilamiento */
+    }
+
+    /* Enlaces (A): Se vuelven bloque para ser clickeables en todo el ancho */
+    .nav-menu a { 
+        display: block; 
+        padding: 0.8rem 1rem; 
+        width: 100%; 
+        border-bottom: 1px solid var(--border-light); 
+        text-align: center; 
+    }
+    .nav-menu li:last-child a { border-bottom: none; }
+    .nav-menu a::after { display: none; }
+
+    /* Layouts Móviles */
+    main { padding: 20px; margin: 15px; }
+    .product-grid, .service-boxes, .gallery { grid-template-columns: 1fr; }
 
     /* Carrusel Móvil */
     .carousel-item {
         max-height: 300px; /* Limita un poco más la altura en móvil */
     }
-    
-    .product-grid, .service-boxes, .gallery { grid-template-columns: 1fr; }
 }
-
-
 /* ----------------------------- */
-/* 7. DARK MODE STYLES     */
+/* 6. VIDEO ASESORAMIENTO (NUEVO) */
 /* ----------------------------- */
-body.dark-mode { background-color: var(--bg-dark); color: var(--text-dark); }
-body.dark-mode header { background-color: var(--bg-content-dark); border-bottom-color: var(--border-dark); }
-body.dark-mode .logo-img { content: url('../img/logo-oscuro.jpg'); }
-body.dark-mode .nav-toggle { color: var(--heading-blue-dark); }
-body.dark-mode .nav-menu { background-color: var(--bg-content-dark); border-top-color: var(--border-dark); }
-body.dark-mode .nav-menu a { color: var(--link-blue-dark); border-bottom-color: var(--border-dark); }
-body.dark-mode #theme-toggle { border-color: var(--border-dark); color: var(--text-muted-dark); }
-body.dark-mode main { background: var(--bg-content-dark); }
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: var(--heading-blue-dark); }
-body.dark-mode h2 { border-bottom-color: var(--primary-blue-dark); }
-body.dark-mode p { color: var(--text-dark); }
-body.dark-mode a { color: var(--link-blue-dark); }
-body.dark-mode .cta-button { background-color: var(--primary-blue-dark); color: #121212 !important; }
-body.dark-mode .whatsapp-button { background-color: #4CAF50; }
-body.dark-mode .verification-button { background-color: #ffb74d; color: #121212 !important;}
-body.dark-mode .services-summary .box, body.dark-mode .product-card { background: #2c2c2c; border-color: var(--border-dark); }
-body.dark-mode footer { background: #000000; color: var(--text-muted-dark); }
+.video-wrapper {
+    max-width: 800px; /* Limita el ancho del video en PC para que no sea gigantesco */
+    margin: 0 auto 1.5rem auto; /* Centra el video */
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.video-wrapper video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
