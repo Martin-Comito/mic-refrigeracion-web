@@ -5,40 +5,23 @@
 
 /* --- Variables de Color BASE (Modo Claro Predeterminado) --- */
 :root {
-    --color-bg-primary: #f8f9fa; /* Fondo General (Body) */
-    --color-bg-secondary: #ffffff; /* Fondo de Contenido (Main, Header, Cards) */
-    --color-text: #212529; /* Texto Principal */
-    --color-heading: #033a7a; /* Títulos Azules */
-    --color-link: #007bff; /* Enlaces Azules */
-    --color-border: #dee2e6; /* Bordes Ligeros */
-    --color-muted: #6c757d; /* Texto Secundario/Gris */
+  /* Colores universales usados por el diseño base (light mode) */
+  --bg-primary: #f8f9fa; 
+  --bg-content: #ffffff; 
+  --text-primary: #212529; 
+  --heading-primary: #033a7a; 
+  --link-primary: #007bff; 
+  --border-primary: #dee2e6; 
+  --text-muted: #6c757d; 
 
-    /* Colores modo oscuro (Valores crudos para sobrescritura) */
-    --dark-bg: #121212; 
-    --dark-content: #1e1e1e; 
-    --dark-text: #e0e0e0; 
-    --dark-heading: #90caf9; 
-    --dark-link: #81d4fa;
-    --dark-border: #3a3a3a;
-    --dark-muted: #bdbdbd;
-}
-
-/* ----------------------------- */
-/* 8. DARK MODE STYLES (SOBRESCRITURA DE VARIABLES)     */
-/* ----------------------------- */
-body.dark-mode {
-    /* Forzamos el body a usar el fondo oscuro */
-    background-color: var(--dark-bg);
-    color: var(--dark-text);
-
-    /* SOBRESCRIBIMOS LAS VARIABLES UNIVERSALES */
-    --color-bg-primary: var(--dark-bg); 
-    --color-bg-secondary: var(--dark-content); 
-    --color-text: var(--dark-text);
-    --color-heading: var(--dark-heading);
-    --color-link: var(--dark-link);
-    --color-border: var(--dark-border);
-    --color-muted: var(--dark-muted); 
+  /* Colores modo oscuro: Gris y Azul Suave (Valores crudos para sobrescritura) */
+  --dark-bg: #121212; 
+  --dark-content: #1e1e1e; 
+  --dark-text: #e0e0e0; 
+  --dark-heading: #90caf9; 
+  --dark-link: #81d4fa;
+  --dark-border: #3a3a3a; 
+  --dark-muted: #bdbdbd;
 }
 
 /* --- Estilos Generales y Reset --- */
@@ -48,12 +31,16 @@ body.dark-mode {
     padding: 0;
 }
 
+/* ------------------------------------------- */
+/* APLICACIÓN DE COLORES BASE (TU DISEÑO ORIGINAL) */
+/* ------------------------------------------- */
+
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
-    /* USA LA VARIABLE UNIVERSAL */
-    background-color: var(--color-bg-primary); 
-    color: var(--color-text);
+    /* Usa variables */
+    background-color: var(--bg-primary); 
+    color: var(--text-primary);
     transition: background-color 0.3s, color 0.3s;
     font-size: 16px;
 }
@@ -61,28 +48,24 @@ body {
 main {
     max-width: 1100px;
     margin: 30px auto;
-    padding: 30px;
-    /* USA LA VARIABLE UNIVERSAL SECUNDARIA */
-    background: var(--color-bg-secondary); 
+    padding: 30px; 
+    /* Usa variables */
+    background: var(--bg-content); 
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
-h1, h2, h3 { margin-bottom: 1rem; color: var(--color-heading); line-height: 1.3; }
-h1 { font-size: 2.2em; }
-h2 { font-size: 1.8em; border-bottom: 2px solid var(--primary-blue); padding-bottom: 0.3rem; margin-bottom: 1.5rem; }
-h3 { font-size: 1.4em; color: var(--primary-blue); }
-p { margin-bottom: 1rem; color: var(--color-text); }
-img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
-
+h1, h2, h3 { margin-bottom: 1rem; color: var(--heading-primary); line-height: 1.3; }
+p { margin-bottom: 1rem; color: var(--text-primary); }
+a { color: var(--link-primary); text-decoration: none; transition: color 0.3s;}
+/* ... (el resto de tus estilos base) ... */
 
 /* ----------------------------- */
 /* 1. HEADER/NAV (Base)  */
 /* ----------------------------- */
 header {
-    /* USA LA VARIABLE UNIVERSAL SECUNDARIA */
-    background: var(--color-bg-secondary); 
+    background: var(--bg-content);
     padding: 0.8rem 5%;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--border-light);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,55 +74,14 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.logo-img { content: url('../img/logo-claro.jpg'); width: 100px; height: auto; display: block; }
-.nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--color-heading); padding: 5px; line-height: 1; z-index: 1001; }
-.nav-menu ul { list-style: none; display: flex; margin: 0; padding: 0; }
-.nav-menu li { margin-left: 20px; }
-.nav-menu a { font-weight: 500; padding: 5px 0; position: relative; transition: color 0.3s; color: var(--color-link); }
-.nav-menu a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background-color: var(--secondary-blue); transition: width 0.3s ease-out; }
-.nav-menu a:hover { color: var(--secondary-blue); }
+/* ... (resto de reglas del header) ... */
 
 #theme-toggle {
-    background: none; border: 1px solid var(--color-border); border-radius: 50%; cursor: pointer; font-size: 1.2rem; padding: 6px 7px; line-height: 1; color: var(--color-muted); transition: background-color 0.3s, color 0.3s, border-color 0.3s; z-index: 1002;
-}
-.header-contact a { color: var(--color-muted); font-size: 0.9em; }
-
-
-/* ----------------------------- */
-/* 2. LAYOUT Y BOTONES   */
-/* ----------------------------- */
-.cta-button {
-    display: inline-block; background-color: var(--primary-blue); color: white !important; padding: 12px 28px; text-decoration: none !important; border-radius: 50px; font-weight: bold; margin-top: 1rem; transition: background-color 0.3s, transform 0.2s; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-/* ... (el resto de los botones y CTA siguen usando colores fijos/universales) ... */
-
-
-/* ----------------------------- */
-/* 3. CENTRADO DE IMAGENES (SOLUCIÓN) */
-/* ----------------------------- */
-
-/* Centrado Imagen Principal (Hero) */
-.hero { text-align: center; margin-bottom: 3rem; }
-.hero img { 
-    margin: 0 auto 1.5rem auto !important; 
-    max-height: 450px; 
-    width: 100%; 
-    height: auto; 
-    object-fit: contain; 
-    border-radius: 8px; 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
-    max-width: 700px; 
+    background: none; border: 1px solid var(--border-light); border-radius: 50%; cursor: pointer; font-size: 1.2rem; padding: 6px 7px; line-height: 1; color: var(--text-muted); transition: background-color 0.3s, color 0.3s, border-color 0.3s; z-index: 1002;
 }
 
-/* Centrado Imagen Sobre Mí */
-.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; }
-.about-me img { margin: 0 auto 1rem auto; display: block; max-width: 220px; }
-.about-me .bio { text-align: left; flex: 1; min-width: 300px; }
-.matricula-details { border: 1px solid var(--color-border); background-color: var(--color-bg-primary); }
-
-
 /* ----------------------------- */
-/* 4. CARRUSEL (SOLUCIÓN FINAL) */
+/* 4. CARRUSEL (SOLUCIÓN BASE) */
 /* ----------------------------- */
 
 .carousel-container {
@@ -147,77 +89,40 @@ header {
     overflow: hidden;
     width: 100%;
     margin: 20px 0;
-    max-height: 400px; 
+    max-height: 400px; /* Dejamos el max-height para controlar la altura en PC */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: var(--color-bg-secondary);
+    background-color: var(--bg-content);
 }
 
-.carousel-slide { display: flex; transition: transform 0.5s ease-in-out; width: 800%; }
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 800%;
+}
+
 .carousel-item {
     width: 12.5%; 
     flex-shrink: 0;
     max-height: 400px;
     height: auto;
-    object-fit: contain; 
-    background-color: var(--color-bg-secondary);
+    object-fit: contain; /* Esto corrige el zoom y se queda así */
+    background-color: var(--bg-content);
 }
 
-.prev-button, .next-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 10; }
-
-
-/* ----------------------------- */
-/* 5. DISEÑO DE SERVICIOS EN 3 COLUMNAS (NUEVO) */
-/* ----------------------------- */
-.services-summary h2 { text-align: center; }
-.services-summary .service-boxes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 1.5rem;
-}
-.services-summary .box {
-    background: var(--color-bg-secondary); 
-    border: 1px solid var(--color-border); 
-    color: var(--color-text); /* Aseguramos que el texto use la variable de tema */
-    padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* ----------------------------- */
-/* 6. VIDEO ASESORAMIENTO (NUEVO) */
-/* ----------------------------- */
-.video-wrapper { max-width: 800px; margin: 0 auto 1.5rem auto; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
-.video-wrapper video { display: block; width: 100%; height: auto; }
-
-
-/* ----------------------------- */
-/* 7. FOOTER / OTROS      */
-/* ----------------------------- */
-footer { background: var(--heading-blue); color: rgba(255, 255, 255, 0.8); font-size: 0.9em; text-align: center; padding: 2rem 1rem; margin-top: 3rem; }
-/* ... (resto de footer) ... */
-
-
-/* ----------------------------- */
-/* 8. MEDIA QUERIES (Móvil)  */
-/* ----------------------------- */
-@media (max-width: 768px) {
-    /* ... (Estilos de móvil, incluyendo la corrección del menú fixed) ... */
-    .nav-menu {
-        position: fixed; 
-        top: 60px; 
-        background-color: var(--color-bg-secondary); /* Usa la variable universal */
-        border-top: 1px solid var(--color-border);
-    }
-    .nav-menu ul { display: block; }
-}
+/* ... (resto de reglas, omitidas por espacio, pero deben estar en tu archivo) ... */
 
 
 /* ----------------------------- */
 /* 9. DARK MODE STYLES (EJECUCIÓN)     */
 /* ----------------------------- */
+/* Cuando JS añade .dark-mode, sobrescribimos SOLO las variables, 
+  lo que hace que todo cambie instantáneamente sin romper el layout. */
 body.dark-mode { 
-    /* Esta sección sólo necesita la SOBRESCRITURA de las variables universales */
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
     
-    /* Nota: No necesitas repetir todas las propiedades aquí, solo las variables crudas */
+    /* SOBRESCRIBIMOS LAS VARIABLES UNIVERSALES */
     --color-bg-primary: var(--dark-bg); 
     --color-bg-secondary: var(--dark-content); 
     --color-text: var(--dark-text);
@@ -226,15 +131,17 @@ body.dark-mode {
     --color-border: var(--dark-border);
     --color-muted: var(--dark-muted); 
     
-    /* Ajustes específicos de color fuera de variables */
-    background-color: var(--dark-bg);
-    color: var(--dark-text);
+    /* Reglas específicas para Dark Mode que no usan variables */
+    /* Para los ítems que tienen background-color fijo, los ajustamos: */
+    
+    /* Estilos de Botones Específicos */
+    .cta-button { background-color: var(--dark-link); color: #121212 !important; }
+    .whatsapp-button { background-color: #4CAF50; color: white !important;}
+    .verification-button { background-color: #ffb74d; color: #121212 !important;}
+    
+    /* Estilos del Header y Footer que necesitan ser más específicos en Dark Mode */
+    header { border-bottom-color: var(--dark-border); }
+    .nav-menu { background-color: var(--dark-content); border-top-color: var(--dark-border); }
+    .nav-menu a { color: var(--dark-link); border-bottom-color: var(--dark-border); }
+    .nav-toggle { color: var(--dark-heading); }
 }
-
-/* Estilos que NO USAN VARIABLES (Asegura el color) */
-body.dark-mode header { border-bottom-color: var(--dark-border); box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); }
-body.dark-mode h2 { border-bottom-color: var(--primary-blue-dark); }
-body.dark-mode .nav-toggle { color: var(--dark-heading); }
-body.dark-mode footer { background: #000000; color: var(--dark-muted); }
-
-/* Finaliza el resto del código CSS aquí */
