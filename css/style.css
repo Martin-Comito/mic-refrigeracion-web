@@ -6,14 +6,14 @@
 /* --- Variables de Color BASE (Modo Claro Predeterminado) --- */
 :root {
   /* UNIVERSALES: Definidas aquí para modo claro */
-  --color-bg-primary: #f8f9fa; /* Fondo General (Body) */
-  --color-bg-content: #ffffff; /* Fondo de Contenido (Main, Header, Cards) */
-  --color-text: #212529; /* Texto Principal */
-  --color-heading: #033a7a; /* Títulos Azules */
-  --color-link: #007bff; /* Enlaces Azules */
-  --color-border: #dee2e6; /* Bordes Ligeros */
-  --color-muted: #6c757d; /* Texto Secundario/Gris */
-  --color-primary-accent: #007bff; /* Botones CTA */
+  --color-bg-primary: #f8f9fa; 
+  --color-bg-content: #ffffff; 
+  --color-text: #212529; 
+  --color-heading: #033a7a; 
+  --color-link: #007bff; 
+  --color-border: #dee2e6; 
+  --color-muted: #6c757d; 
+  --color-primary-accent: #007bff; 
 
   /* Colores modo oscuro (Valores crudos para sobrescritura) */
   --dark-bg: #121212; 
@@ -59,7 +59,6 @@ body.dark-mode {
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
-    /* USA VARIABLE UNIVERSAL */
     background-color: var(--color-bg-primary); 
     color: var(--color-text);
     transition: background-color 0.3s, color 0.3s;
@@ -70,7 +69,6 @@ main {
     max-width: 1100px;
     margin: 30px auto;
     padding: 30px;
-    /* USA VARIABLE UNIVERSAL */
     background: var(--color-bg-content); 
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -81,8 +79,8 @@ h2 { font-size: 1.8em; border-bottom: 2px solid var(--color-primary-accent); pad
 h3 { font-size: 1.4em; color: var(--color-primary-accent); }
 p { margin-bottom: 1rem; color: var(--color-text); }
 a { color: var(--color-link); text-decoration: none; transition: color 0.3s;}
-a:hover { text-decoration: underline; color: var(--secondary-blue); } /* Mantener secondary blue fijo si quieres */
-.header-contact a { color: var(--color-muted); font-size: 0.9em; }
+a:hover { text-decoration: underline; color: var(--secondary-blue); }
+img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 
 
 /* ----------------------------- */
@@ -100,50 +98,199 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.nav-menu a { color: var(--color-link); }
-.nav-menu a::after { background-color: var(--color-primary-accent); } /* Usar universal para la línea */
+/* CORRECCIÓN LOGO: Asegura el tamaño estricto de 100px */
+.logo-img { 
+    content: url('../img/logo-claro.jpg'); 
+    width: 100px !important; 
+    max-width: 100px !important; 
+    height: auto; 
+    display: block; 
+}
+.nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--color-heading); padding: 5px; line-height: 1; z-index: 1001; }
+.nav-menu ul { list-style: none; display: flex; margin: 0; padding: 0; }
+.nav-menu li { margin-left: 20px; }
+.nav-menu a { font-weight: 500; padding: 5px 0; position: relative; transition: color 0.3s; color: var(--color-link); }
+.nav-menu a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background-color: var(--color-primary-accent); }
+.nav-menu a:hover { color: var(--secondary-blue); }
+.nav-menu a:hover::after { width: 100%; }
 
-#theme-toggle { border: 1px solid var(--color-border); color: var(--color-muted); }
-.about-me .bio { color: var(--color-text); }
+#theme-toggle { border: 1px solid var(--color-border); color: var(--color-muted); z-index: 1002; }
+.header-contact a { color: var(--color-muted); font-size: 0.9em; }
 
 
 /* ----------------------------- */
 /* 2. LAYOUT Y BOTONES   */
 /* ----------------------------- */
-.cta-button { background-color: var(--color-primary-accent); color: white !important; }
+.cta-button {
+    display: inline-block; background-color: var(--color-primary-accent); color: white !important; padding: 12px 28px; text-decoration: none !important; border-radius: 50px; font-weight: bold; margin-top: 1rem; transition: background-color 0.3s, transform 0.2s; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.cta-button:hover { background-color: var(--secondary-blue); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+.whatsapp-button { background-color: #25D366; }
 .verification-button { background-color: #ffc107; color: #333 !important; }
 
 /* ----------------------------- */
-/* 3. CARRUSEL / PRODUCTOS */
+/* 3. CENTRADO DE IMAGENES (SOLUCIÓN) */
 /* ----------------------------- */
 
-.carousel-container { background-color: var(--color-bg-content); border: 1px solid var(--color-border); }
-.carousel-item { background-color: var(--color-bg-content); }
-.product-card { background-color: var(--color-bg-content); border: 1px solid var(--color-border); }
+/* Centrado Imagen Principal (Hero) */
+.hero { text-align: center; margin-bottom: 3rem; }
+.hero img { 
+    margin: 0 auto 1.5rem auto !important; 
+    max-height: 450px; 
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    border-radius: 8px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    max-width: 700px; /* Limita el ancho en PC */
+}
+
+/* Centrado Imagen Sobre Mí */
+.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; }
+.about-me img { 
+    margin: 0 auto 1rem auto; 
+    display: block; 
+    max-width: 220px; 
+}
+.about-me .bio { text-align: left; flex: 1; min-width: 300px; }
+.matricula-details { border: 1px solid var(--color-border); background-color: var(--color-bg-primary); }
 
 
 /* ----------------------------- */
-/* 4. FOOTER / OTROS      */
-/* ----------------------------- */
-footer { background: var(--heading-blue); color: rgba(255, 255, 255, 0.8); }
-.social-links a { color: #fff; }
-
-
-/* ----------------------------- */
-/* 5. DARK MODE (AJUSTES PUNTUALES) */
+/* 4. CARRUSEL (SOLUCIÓN FINAL) */
 /* ----------------------------- */
 
-/* Ajuste específico para el texto de los botones en modo oscuro */
-body.dark-mode .cta-button { color: #121212 !important; } 
-body.dark-mode .whatsapp-button { background-color: #4CAF50; }
-body.dark-mode .verification-button { background-color: #ffb74d; color: #121212 !important;}
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 20px 0;
+    max-height: 400px; /* Limita la altura del contenedor principal */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-bg-content);
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 800%; /* Para 8 imágenes */
+}
+
+.carousel-item {
+    width: 12.5%; /* 100% / 8 = 12.5% */
+    flex-shrink: 0;
+    max-height: 400px;
+    height: auto;
+    object-fit: contain; /* CRUCIAL: Muestra la imagen completa */
+    background-color: var(--color-bg-content);
+}
+
+.prev-button, .next-button {
+    position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 10; font-size: 1.5rem; line-height: 1; border-radius: 5px; opacity: 0.8;
+}
+.prev-button { left: 10px; }
+.next-button { right: 10px; }
 
 
 /* ----------------------------- */
-/* 6. MEDIA QUERIES (Móvil)  */
+/* 5. DISEÑO DE SERVICIOS EN 3 COLUMNAS */
+/* ----------------------------- */
+.services-summary h2 { text-align: center; }
+.services-summary .service-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem;
+}
+.services-summary .box {
+    background: var(--bg-content); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.3s, box-shadow 0.3s;
+}
+.services-summary .learn-more { display: inline-block; margin-top: 1rem; font-weight: bold; color: var(--color-primary-accent); }
+
+
+/* ----------------------------- */
+/* 6. VIDEO ASESORAMIENTO */
+/* ----------------------------- */
+.video-wrapper { max-width: 800px; margin: 0 auto 1.5rem auto; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+.video-wrapper video { display: block; width: 100%; height: auto; }
+
+
+/* ----------------------------- */
+/* 7. FOOTER / OTROS      */
+/* ----------------------------- */
+footer { background: var(--heading-blue); color: rgba(255, 255, 255, 0.8); font-size: 0.9em; text-align: center; padding: 2rem 1rem; margin-top: 3rem; }
+.social-links a { color: #fff; margin: 0 15px; font-size: 1.2em; display: inline-block; }
+
+
+/* ----------------------------- */
+/* 8. MEDIA QUERIES (Móvil)  */
 /* ----------------------------- */
 @media (max-width: 768px) {
-    /* (Mantener tus reglas de menú móvil y carrusel aquí) */
-    .nav-menu { background-color: var(--color-bg-content); border-top: 1px solid var(--color-border); }
-    .nav-menu a { border-bottom: 1px solid var(--color-border); }
+    body { font-size: 15px; }
+ 
+    /* Header Móvil y Menú */
+    header { flex-wrap: wrap; padding: 1rem 3%; position: static; } 
+    .nav-toggle { display: block; order: 3; }
+    .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; }
+
+    /* Contenedor del Menú: Oculto por defecto */
+    .nav-menu {
+        display: none;
+        position: fixed; 
+        top: 60px; /* VALOR A AJUSTAR: Altura del header para el despliegue */
+        left: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        overflow-y: auto; 
+        background-color: var(--color-bg-content);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+    .nav-menu.nav-menu_visible { display: block; }
+
+    /* Lista (UL/LI) del Menú: Vertical */
+    .nav-menu ul { display: block; padding: 0;}
+    .nav-menu li { margin: 0; width: 100%; display: block; }
+    .nav-menu a { display: block; padding: 0.8rem 1rem; width: 100%; border-bottom: 1px solid var(--color-border); text-align: center; }
+
+    /* Layouts Móviles */
+    main { padding: 20px; margin: 15px; }
+    .product-grid, .service-boxes, .gallery { grid-template-columns: 1fr; }
+    .carousel-item { max-height: 300px; /* Limita un poco más la altura en móvil */ }
 }
+
+
+/* ----------------------------- */
+/* 10. DARK MODE STYLES (EJECUCIÓN)     */
+/* ----------------------------- */
+body.dark-mode { 
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+
+    /* SOBRESCRIBIMOS LAS VARIABLES UNIVERSALES */
+    --color-bg-primary: var(--dark-bg); 
+    --color-bg-content: var(--dark-content); 
+    --color-text: var(--dark-text);
+    --color-heading: var(--dark-heading);
+    --color-link: var(--dark-link);
+    --color-border: var(--dark-border);
+    --color-muted: var(--dark-muted); 
+    --color-primary-accent: var(--dark-primary-accent); 
+}
+
+/* Reglas específicas para Dark Mode (asegurar el color de fondo de los elementos) */
+body.dark-mode header { background: var(--dark-content); border-bottom-color: var(--dark-border); }
+body.dark-mode main { background: var(--dark-content); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05); }
+
+body.dark-mode .nav-menu { background: var(--dark-content); border-top-color: var(--dark-border); }
+body.dark-mode .nav-menu a { border-bottom-color: var(--dark-border); }
+
+body.dark-mode .services-summary .box, 
+body.dark-mode .product-card, 
+body.dark-mode .carousel-container { background: var(--dark-content); border-color: var(--dark-border); }
+
+/* Ajustes específicos de color fuera de variables */
+body.dark-mode .cta-button { color: #121212 !important; }
+body.dark-mode .whatsapp-button { background-color: #4CAF50; }
+body.dark-mode .verification-button { background-color: #ffb74d; color: #121212 !important;}
+body.dark-mode footer { background: #000000; color: var(--dark-muted); }
