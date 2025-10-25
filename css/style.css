@@ -551,3 +551,54 @@ body.dark-mode .matricula-details { border-color: var(--border-dark); background
 body.dark-mode footer { background: #000000; color: var(--text-muted-dark); }
 
 body.dark-mode .social-links a { color: var(--link-blue-dark); }
+/* |--------------------------------------------------------------------------
+| AJUSTES FINALES DE CENTRADO PARA ESCRITORIO
+|--------------------------------------------------------------------------
+*/
+
+/* 1. Centrado de la Imagen Principal (Hero Image en index.html) */
+.hero img {
+    /* Mantenemos las reglas de tamaño y ajuste, pero aseguramos el centrado */
+    margin: 0 auto 1.5rem auto !important; /* !important asegura que sobrescriba cualquier otra regla */
+    
+    /* Le damos un ancho máximo para que el margin: auto funcione correctamente */
+    max-width: 700px; 
+}
+
+/* 2. Centrado de la Imagen en la Sección Sobre Mí (nosotros.html) */
+.about-me {
+    /* Alinea el texto (párrafos) y los elementos interiores al centro */
+    text-align: center; 
+    
+    /* En vista de escritorio (flex-start), quitamos la alineación flexible
+       para que el text-align: center funcione bien si no hay espacio lateral */
+    align-items: center;
+}
+
+.about-me img {
+    /* Forzamos el centrado del elemento de bloque (la imagen de Matías) */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    display: block; /* Aseguramos que se comporte como bloque para que margin: auto funcione */
+}
+
+/* 3. Ajuste para que el texto de Sobre Mí no quede centrado si tiene espacio */
+.about-me .bio {
+    /* Devolvemos la alineación a la izquierda para que los párrafos no se vean centrados
+       solo la imagen quedará centrada */
+    text-align: left;
+}
+
+/* ----------------------------- */
+/* 9. MEDIA QUERIES (Asegurar que el centrado funcione en móvil y PC) */
+/* ----------------------------- */
+
+@media (max-width: 768px) {
+    /* En móvil, la regla .about-me (flex-direction: column) ya nos ayuda, 
+       pero reforzamos que la imagen se vea centrada */
+    .about-me img {
+        max-width: 180px; /* Tamaño un poco más pequeño en móvil */
+        margin: 0 auto 1rem auto;
+    }
+}
