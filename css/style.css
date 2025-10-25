@@ -378,41 +378,39 @@ body.dark-mode main {
  body.dark-mode footer p { color: var(--text-muted-dark); }
  body.dark-mode .footer-links a { color: var(--link-blue-dark); }
  body.dark-mode .footer-links a:hover { color: var(--secondary-blue-dark); }
+ 
 /* --- Estilos para Carruseles --- */
 
 .carousel-container {
     position: relative;
-    overflow: hidden; /* Oculta todo lo que está fuera del contenedor */
+    overflow: hidden;
     width: 100%;
     margin: 20px 0;
+    /* --- CAMBIO CLAVE AQUI: Altura máxima para limitar el tamaño vertical --- */
+    max-height: 400px; /* Definir una altura máxima razonable (ajusta si 400px es mucho) */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-slide {
     display: flex;
-    transition: transform 0.5s ease-in-out; /* Animación de deslizamiento */
-    width: 400%; /* 4 imágenes * 100% = 400% de ancho total */
+    transition: transform 0.5s ease-in-out;
+    width: 400%; /* Sigue siendo 4 ítems * 100% */
+    height: 100%; /* Asegura que tome la altura del contenedor */
 }
 
 .carousel-item {
-    width: 25%; /* Cada ítem ocupa 1/4 del ancho total del slide */
-    flex-shrink: 0; /* Evita que las imágenes se encojan */
-    height: 350px; /* Altura fija para que todos los carruseles se vean iguales */
-    object-fit: cover; /* Asegura que la imagen llene el espacio (puede recortar) */
+    width: 25%;
+    flex-shrink: 0;
+    
+    /* --- CAMBIOS CLAVE PARA EVITAR ZOOM/RECORTE --- */
+    height: 100%; /* Ocupa el 100% del alto del slide (que es 400px) */
+    object-fit: contain; /* Ajusta la imagen DENTRO del contenedor sin recortar */
+    /* object-fit: cover; <--- ESTO ES LO QUE CAUSABA EL ZOOM/RECORTE */
+    
+    /* El background blanco es para rellenar los espacios si la imagen no es un cuadrado */
+    background-color: var(--bg-content-light); 
 }
-
-/* Si prefieres que la imagen se vea COMPLETA (sin zoom/recorte), usa: */
-/*
-.carousel-item {
-    width: 25%; 
-    flex-shrink: 0; 
-    max-height: 350px;
-    height: auto; 
-    object-fit: contain; 
-}
-*/
-
 /* --- Botones de Navegación --- */
 
 .prev-button, .next-button {

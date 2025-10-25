@@ -48,17 +48,24 @@ const moonIcon  = '☀️'; // Icono para modo oscuro
 function applyTheme(theme) {
     if (theme === 'dark') {
         bodyElement.classList.add('dark-mode');
-        themeToggleButton.innerHTML = sunIcon;
+        themeToggleButton.innerHTML = moonIcon; // Muestra la LUNA
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo claro');
-        // CAMBIO DE LOGO A OSCURO
-        if (logoElement) logoElement.src = 'img/logo-oscuro.jpg'; 
+        // CORRECCIÓN DEL LOGO: Forzar el cambio de SRC
+        if (logoElement) {
+            // Utilizamos .src directamente para forzar la carga del logo oscuro
+            logoElement.src = 'img/logo-oscuro.jpg'; 
+            logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Oscuro');
+        } 
         localStorage.setItem('theme', 'dark');
     } else {
         bodyElement.classList.remove('dark-mode');
-        themeToggleButton.innerHTML = moonIcon;
+        themeToggleButton.innerHTML = sunIcon; // Muestra el SOL
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo oscuro');
-        // CAMBIO DE LOGO A CLARO
-        if (logoElement) logoElement.src = 'img/logo-claro.jpg'; 
+        // CORRECCIÓN DEL LOGO: Forzar el cambio de SRC
+        if (logoElement) {
+            logoElement.src = 'img/logo-claro.jpg'; 
+            logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Claro');
+        }
         localStorage.setItem('theme', 'light');
     }
 }
