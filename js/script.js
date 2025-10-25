@@ -38,8 +38,8 @@ const themeToggleButton = document.getElementById('theme-toggle');
 const bodyElement = document.body;
 const logoElement = document.querySelector('.logo-img');
 
-const sunIcon = '☀️'; // Icono para modo claro
-const moonIcon = '🌙'; // Icono para modo oscuro
+const sunIcon = '🌙'; // Icono para modo claro
+const moonIcon  = '☀️'; // Icono para modo oscuro
 
 /**
  * Aplica el tema, cambia el logo y guarda la preferencia.
@@ -84,3 +84,55 @@ if (themeToggleButton) {
         applyTheme(newTheme);
     });
 }
+// --- Funcionalidad Carruseles ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Selecciona todos los botones de navegación de carrusel
+    const prevButtons = document.querySelectorAll('.prev-button');
+    const nextButtons = document.querySelectorAll('.next-button');
+
+    // Función para manejar el movimiento del carrusel
+    function moveSlide(carouselId, direction) {
+        const slide = document.querySelector(`.carousel-slide[data-carousel-id="${carouselId}"]`);
+        if (!slide) return;
+
+        // Calcula el índice actual del slide
+        let currentItemIndex = parseInt(slide.getAttribute('data-current-index') || 0);
+        const totalItems = slide.children.length;
+
+        // Calcula el nuevo índice
+        let newIndex = currentItemIndex + direction;
+
+        // Manejo de límites (loop infinito)
+        if (newIndex < 0) {
+            newIndex = totalItems - 1;
+        } else if (newIndex >= totalItems) {
+            newIndex = 0;
+        }
+
+        // Calcula la posición de desplazamiento
+        const itemWidth = slide.clientWidth / totalItems; // El ancho de un solo item
+        const scrollAmount = newIndex * itemWidth;
+
+        // Aplica el desplazamiento usando CSS Transform
+        slide.style.transform = `translateX(-${newIndex * 100}%)`;
+
+        // Actualiza el índice en el atributo de datos
+        slide.setAttribute('data-current-index', newIndex);
+    }
+
+    // Event Listeners para los botones
+    prevButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const carouselId = button.getAttribute('data-carousel-target');
+            moveSlide(carouselId, -1); // Mover hacia atrás
+        });
+    });
+
+    nextButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const carouselId = button.getAttribute('data-carousel-target');
+            moveSlide(carouselId, 1); // Mover hacia adelante
+        });
+    });
+});
