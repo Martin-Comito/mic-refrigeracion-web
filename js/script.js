@@ -5,13 +5,14 @@ const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const themeToggleButton = document.getElementById('theme-toggle');
 const bodyElement = document.body;
-const logoElement = document.querySelector('.logo-img');
+const logoElement = document.querySelector('.logo-img'); // Asegúrate de que esta etiqueta esté en tu HTML
+
 
 // --- Iconos ---
 const sunIcon = '☀️'; 
 const moonIcon = '🌙'; 
 
-// --- Funcionalidad Modo Claro/Oscuro ---
+// --- Funcionalidad Modo Claro/Oscuro (CON EXTENSIÓN .PNG) ---
 
 /**
  * Aplica el tema, cambia el logo y guarda la preferencia.
@@ -19,7 +20,7 @@ const moonIcon = '🌙';
  */
 function applyTheme(theme) {
     if (!bodyElement || !themeToggleButton || !logoElement) {
-        console.error("Modo oscuro: Faltan elementos críticos del DOM.");
+        // Fallar silenciosamente si el elemento no se encuentra (no rompe la página)
         return;
     }
 
@@ -28,7 +29,8 @@ function applyTheme(theme) {
         themeToggleButton.innerHTML = moonIcon; 
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo claro');
         
-        logoElement.src = 'img/logo-oscuro.jpg'; 
+        // CORRECCIÓN: Usar la extensión .png (o el nombre exacto que tenga el archivo)
+        logoElement.src = 'img/logo-oscuro.png'; 
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Oscuro');
         
         localStorage.setItem('theme', 'dark');
@@ -37,7 +39,8 @@ function applyTheme(theme) {
         themeToggleButton.innerHTML = sunIcon; 
         themeToggleButton.setAttribute('aria-label', 'Cambiar a modo oscuro');
         
-        logoElement.src = 'img/logo-claro.jpg'; 
+        // CORRECCIÓN: Usar la extensión .png (o el nombre exacto que tenga el archivo)
+        logoElement.src = 'img/logo-claro.png'; 
         logoElement.setAttribute('alt', 'Logo MIC Refrigeración - Claro');
         
         localStorage.setItem('theme', 'light');
@@ -96,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- Funcionalidad Carruseles (Va aquí) ---
+    // --- Funcionalidad Carruseles (Base) ---
     const prevButtons = document.querySelectorAll('.prev-button');
     const nextButtons = document.querySelectorAll('.next-button');
 
