@@ -293,3 +293,18 @@ body.dark-mode .cta-button { color: #121212 !important; }
 body.dark-mode .whatsapp-button { background-color: #4CAF50; }
 body.dark-mode .verification-button { background-color: #ffb74d; color: #121212 !important;}
 body.dark-mode footer { background: #000000; color: var(--dark-muted); }
+/* Estilo para el icono de WhatsApp en la cabecera */
+.header-contact .fa-whatsapp {
+    font-size: 24px; /* Tamaño del icono */
+    color: var(--color-heading); /* Color del icono (el azul oscuro de tus títulos) */
+    transition: color 0.3s;
+}
+
+.header-contact .fa-whatsapp:hover {
+    color: #25D366; /* Verde de WhatsApp al pasar el mouse */
+}
+
+/* Para el Modo Oscuro */
+body.dark-mode .header-contact .fa-whatsapp {
+    color: var(--color-heading); /* Usa tu color de encabezado oscuro (azul claro) */
+}
