@@ -5,16 +5,17 @@
 
 /* --- Variables de Color BASE (Modo Claro Predeterminado) --- */
 :root {
-  --color-bg-primary: #f0f0f0; 
-  --color-bg-content: #fcfcfc; 
+  /* UNIVERSALES: Definidas aquí para modo claro (OPACADAS Y AJUSTADAS) */
+  --color-bg-primary: #f0f0f0; /* Fondo General (Gris muy claro) */
+  --color-bg-content: #fcfcfc; /* Fondo de Contenido (Blanco roto) */
   --color-text: #212529; 
   --color-heading: #033a7a; 
   --color-link: #007bff; 
   --color-border: #d0d0d0; 
   --color-muted: #6c757d; 
-  --color-primary-accent: #007bff; 
+  --color-primary-accent: #0f66d4; /* Azul de CTA MENOS BRILLANTE (Ajuste #1) */
 
-  /* Colores modo oscuro */
+  /* Colores modo oscuro (Valores crudos para sobrescritura) */
   --dark-bg: #121212; 
   --dark-content: #1e1e1e; 
   --dark-text: #e0e0e0; 
@@ -29,6 +30,7 @@
 /* 9. DARK MODE STYLES (SOBRESCRITURA DE VARIABLES)     */
 /* ----------------------------- */
 body.dark-mode { 
+    /* Forzamos el body a usar el fondo oscuro y sobrescribimos las variables */
     background-color: var(--dark-bg);
     color: var(--dark-text);
 
@@ -49,9 +51,14 @@ body.dark-mode {
     padding: 0;
 }
 
+/* ------------------------------------------- */
+/* APLICACIÓN DE COLORES BASE (USANDO VARIABLES) */
+/* ------------------------------------------- */
+
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
+    /* USA VARIABLE UNIVERSAL (SOLUCIONA EL BLANCO BRILLOSO) */
     background-color: var(--color-bg-primary); 
     color: var(--color-text);
     transition: background-color 0.3s, color 0.3s;
@@ -76,35 +83,13 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 /* ----------------------------- */
 /* 1. HEADER/NAV (Base)  */
 /* ----------------------------- */
-header {
-    background: var(--color-bg-content);
-    padding: 0.8rem 5%;
-    border-bottom: 1px solid var(--color-border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 1000; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-/* CORRECCIÓN LOGO */
+header { background: var(--color-bg-content); padding: 0.8rem 5%; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
 .logo-img { width: 100px !important; max-width: 100px !important; height: auto; display: block; }
 .nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--color-heading); padding: 5px; line-height: 1; z-index: 1001; }
-
-/* Menú Escritorio (Horizontal) - SOLUCIONA ACUMULACIÓN EN PC */
-.nav-menu {
-    display: block; 
-}
-.nav-menu ul { 
-    list-style: none; 
-    display: flex; /* FUERZA HORIZONTALIDAD */
-    margin: 0; padding: 0; 
-}
+.nav-menu ul { list-style: none; display: flex; margin: 0; padding: 0; }
 .nav-menu li { margin-left: 20px; }
 .nav-menu a { font-weight: 500; padding: 5px 0; position: relative; transition: color 0.3s; color: var(--color-link); }
 .nav-menu a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background-color: var(--color-primary-accent); transition: width 0.3s ease-out; }
-
 #theme-toggle { border: 1px solid var(--color-border); color: var(--color-muted); z-index: 1002; }
 
 
@@ -114,20 +99,17 @@ header {
 .cta-button { background-color: var(--color-primary-accent); color: white !important; }
 .whatsapp-button { background-color: #25D366; }
 
+
 /* ----------------------------- */
 /* 3. CENTRADO DE IMAGENES (SOLUCIÓN) */
 /* ----------------------------- */
 .hero { text-align: center; margin-bottom: 3rem; }
 .hero img { margin: 0 auto 1.5rem auto !important; max-height: 450px; width: 100%; height: auto; object-fit: contain; max-width: 700px; }
 
-.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; }
-.about-me img { margin: 0 auto 1rem auto; display: block; max-width: 220px; }
-
 
 /* ----------------------------- */
 /* 4. CARRUSEL (SOLUCIÓN FINAL DE BOTONES Y ZOOM) */
 /* ----------------------------- */
-
 .carousel-container {
     position: relative; overflow: hidden; width: 100%; margin: 20px auto; 
     max-height: 400px; 
@@ -136,14 +118,7 @@ header {
 }
 .carousel-slide { display: flex; transition: transform 0.5s ease-in-out; width: 800%; }
 .carousel-item { width: 12.5%; flex-shrink: 0; max-height: 400px; height: auto; object-fit: contain; background-color: var(--color-bg-content); }
-
-/* CORRECCIÓN BOTONES SUPERPUESTOS */
-.prev-button, .next-button {
-    position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); 
-    color: white; border: none; cursor: pointer; z-index: 100; font-size: 1.5rem; line-height: 1; 
-    width: 40px; height: 40px; border-radius: 50%; padding: 0;
-    display: flex; align-items: center; justify-content: center;
-}
+.prev-button, .next-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 100; font-size: 1.5rem; line-height: 1; width: 40px; height: 40px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; }
 .prev-button { left: 10px; } 
 .next-button { right: 10px; } 
 
@@ -157,10 +132,9 @@ header {
     grid-template-columns: repeat(3, 1fr); 
     gap: 1.5rem;
     max-width: 900px; 
-    margin: 0 auto; /* Centra el contenedor Grid */
+    margin: 0 auto; 
 }
 .services-summary .box { background: var(--color-bg-content); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 8px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-.services-summary .learn-more { display: inline-block; margin-top: 1rem; font-weight: bold; color: var(--color-primary-accent); }
 
 /* CORRECCIÓN CTA INICIO: Limita y Centra la sección "Necesitas Asesoramiento?" */
 .cta-section {
@@ -170,13 +144,35 @@ header {
     text-align: center;
     border-radius: 8px;
     margin-top: 2rem;
-    max-width: 800px; /* Limita el ancho del bloque */
+    max-width: 800px; 
     margin-left: auto; 
     margin-right: auto; /* Centra el bloque de la CTA */
 }
 .cta-section h2 { color: white; border-bottom: none; }
-.cta-section p { color: rgba(255, 255, 255, 0.9); }
-.cta-section .cta-button { background-color: white; color: var(--primary-blue) !important; }
+.cta-section .cta-button { background-color: white; color: var(--color-heading) !important; }
+
+
+/* ----------------------------- */
+/* 7. FOOTER / OTROS (CORRECCIÓN CENTRADO REDES)      */
+/* ----------------------------- */
+footer { 
+    background: var(--heading-blue); 
+    color: rgba(255, 255, 255, 0.8); 
+    font-size: 0.9em; 
+    text-align: center; 
+    padding: 2rem 1rem; 
+    margin-top: 3rem; 
+    
+    max-width: 1100px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+.social-links { 
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 15px 0; /* Espaciado entre la intro y el copyright */
+}
+.social-links a { color: #fff; margin: 0 15px; font-size: 1.5em; display: inline-block; }
 
 
 /* ----------------------------- */
@@ -185,22 +181,17 @@ header {
 @media (max-width: 768px) {
     /* Header Móvil */
     header { position: static; } 
-    .nav-toggle { display: block; order: 3; } /* Muestra el botón hamburguesa */
+    .nav-toggle { display: block; order: 3; }
     .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; }
 
-    /* Menú Móvil (Vertical y Desplegable) */
-    .nav-menu {
-        display: none;
-        position: fixed; 
-        top: 60px; /* VALOR A AJUSTAR */
-        left: 0; width: 100%; height: calc(100% - 60px); overflow-y: auto; 
-        background-color: var(--color-bg-content); box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 999;
-    }
+    /* Contenedor del Menú: Oculto por defecto */
+    .nav-menu { position: fixed; top: 60px; left: 0; width: 100%; height: calc(100% - 60px); overflow-y: auto; background-color: var(--color-bg-content); box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 999; }
     .nav-menu.nav-menu_visible { display: block; }
-    
+
     /* Forzar Verticalidad */
     .nav-menu ul { display: block; padding: 0;}
     .nav-menu li { margin: 0; width: 100%; display: block; }
+    .nav-menu a { display: block; padding: 0.8rem 1rem; width: 100%; border-bottom: 1px solid var(--color-border); text-align: center; }
 
     /* Layouts Móviles */
     .product-grid, .service-boxes, .gallery { grid-template-columns: 1fr; }
@@ -209,18 +200,29 @@ header {
 
 
 /* ----------------------------- */
-/* 9. DARK MODE STYLES (EJECUCIÓN)     */
+/* 10. DARK MODE STYLES (EJECUCIÓN)     */
 /* ----------------------------- */
 body.dark-mode { 
-    background-color: var(--dark-bg); color: var(--dark-text);
-    --color-bg-primary: var(--dark-bg); --color-bg-content: var(--dark-content); --color-text: var(--dark-text);
-    --color-heading: var(--dark-heading); --color-link: var(--dark-link); --color-border: var(--dark-border);
-    --color-muted: var(--dark-muted); --color-primary-accent: var(--dark-primary-accent); 
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+
+    --color-bg-primary: var(--dark-bg); 
+    --color-bg-content: var(--dark-content); 
+    --color-text: var(--dark-text);
+    --color-heading: var(--dark-heading);
+    --color-link: var(--dark-link);
+    --color-border: var(--dark-border);
+    --color-muted: var(--dark-muted); 
+    --color-primary-accent: var(--dark-primary-accent); 
 }
+
+/* Reglas específicas para Dark Mode */
 body.dark-mode header { background: var(--dark-content); border-bottom-color: var(--dark-border); }
 body.dark-mode main { background: var(--dark-content); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05); }
 body.dark-mode .nav-menu { background: var(--dark-content); border-top-color: var(--dark-border); }
 body.dark-mode .nav-menu a { border-bottom-color: var(--dark-border); }
-body.dark-mode .services-summary .box, body.dark-mode .product-card, body.dark-mode .carousel-container { background: var(--dark-content); border-color: var(--dark-border); }
+body.dark-mode .services-summary .box, 
+body.dark-mode .product-card, 
+body.dark-mode .carousel-container { background: var(--dark-content); border-color: var(--dark-border); }
 body.dark-mode footer { background: #000000; color: var(--dark-muted); }
 body.dark-mode .cta-button { color: #121212 !important; }
