@@ -113,6 +113,8 @@ header {
 
 /* CORRECCIÓN LOGO: Asegura el tamaño estricto de 100px */
 .logo-img { 
+    /* ... (estilos de tamaño) ... */
+    background-color: transparent !important; /* Forzar fondo transparente */
     width: 100px !important; 
     max-width: 100px !important; 
     height: auto; 
