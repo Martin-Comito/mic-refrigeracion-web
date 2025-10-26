@@ -5,16 +5,29 @@
 
 /* --- Variables de Color BASE (Modo Claro Predeterminado) --- */
 :root {
-  /* UNIVERSALES: Definidas aquí para modo claro */
-  --color-bg-primary: #f8f9fa; 
-  --color-bg-content: #ffffff; 
+  /* UNIVERSALES: Definidas aquí para modo claro (AHORA OPACADO) */
+  --color-bg-primary: #f0f0f0; /* Antes: #f8f9fa - Nuevo: Gris muy claro (fondo general) */
+  --color-bg-content: #fcfcfc; /* Antes: #ffffff - Nuevo: Blanco roto (fondo de main/header) */
+  
   --color-text: #212529; 
   --color-heading: #033a7a; 
   --color-link: #007bff; 
-  --color-border: #dee2e6; 
+  --color-border: #d0d0d0; /* Borde más visible contra el fondo más oscuro */
   --color-muted: #6c757d; 
   --color-primary-accent: #007bff; 
 
+  /* Colores modo oscuro (Valores crudos para sobrescritura) */
+  --dark-bg: #121212; 
+  --dark-content: #1e1e1e; 
+  --dark-text: #e0e0e0; 
+  --dark-heading: #90caf9; 
+  --dark-link: #81d4fa;
+  --dark-border: #3a3a3a; 
+  --dark-muted: #bdbdbd;
+  --dark-primary-accent: #81d4fa;
+
+
+/* ... (El resto del código CSS sigue igual) ... */
   /* Colores modo oscuro (Valores crudos para sobrescritura) */
   --dark-bg: #121212; 
   --dark-content: #1e1e1e; 
