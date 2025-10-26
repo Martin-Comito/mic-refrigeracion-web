@@ -99,7 +99,31 @@ header { background: var(--color-bg-content); padding: 0.8rem 5%; border-bottom:
 .cta-button { background-color: var(--color-primary-accent); color: white !important; }
 .whatsapp-button { background-color: #25D366; }
 
+/* Centrado Imagen Sobre Mí */
+.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; }
+.about-me img { 
+   margin: 0 auto 1rem auto; /* Ya tiene margin auto */
+    display: block; 
+    max-width: 220px; 
+}
+.about-me .bio { text-align: left; flex: 1; min-width: 300px; }
+/* CORRECCIÓN: Centrado horizontal del contenido FLEX */
+.about-me {
+    /* Mantenemos tus reglas existentes: */
+    text-align: center; 
+    display: flex; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 2rem; 
+    
+    /* REGLA CRÍTICA AGREGADA: Centra el contenido horizontalmente */
+    justify-content: center; 
 
+    /* Damos un ancho máximo para que el bloque no se estire demasiado */
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
 /* ----------------------------- */
 /* 3. CENTRADO DE IMAGENES (SOLUCIÓN) */
 /* ----------------------------- */
@@ -180,22 +204,22 @@ footer {
 /* ----------------------------- */
 @media (max-width: 768px) {
     /* Header Móvil */
-    header { position: static; } 
-    .nav-toggle { display: block; order: 3; }
-    .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; }
+    header { position: static; } 
+    .nav-toggle { display: block; order: 3; }
+    .theme-switcher { order: 2; margin-left: auto; margin-right: 15px; }
 
     /* Contenedor del Menú: Oculto por defecto */
-    .nav-menu { position: fixed; top: 60px; left: 0; width: 100%; height: calc(100% - 60px); overflow-y: auto; background-color: var(--color-bg-content); box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 999; }
-    .nav-menu.nav-menu_visible { display: block; }
+    .nav-menu { position: fixed; top: 60px; left: 0; width: 100%; height: calc(100% - 60px); overflow-y: auto; background-color: var(--color-bg-content); box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 999; }
+    .nav-menu.nav-menu_visible { display: block; }
 
     /* Forzar Verticalidad */
-    .nav-menu ul { display: block; padding: 0;}
-    .nav-menu li { margin: 0; width: 100%; display: block; }
-    .nav-menu a { display: block; padding: 0.8rem 1rem; width: 100%; border-bottom: 1px solid var(--color-border); text-align: center; }
+    .nav-menu ul { display: block; padding: 0;}
+    .nav-menu li { margin: 0; width: 100%; display: block; }
+    .nav-menu a { display: block; padding: 0.8rem 1rem; width: 100%; border-bottom: 1px solid var(--color-border); text-align: center; }
 
     /* Layouts Móviles */
-    .product-grid, .service-boxes, .gallery { grid-template-columns: 1fr; }
-    .carousel-item { max-height: 300px; }
+    .product-grid, .service-boxes, .gallery { grid-template-columns: 1fr; }
+    .carousel-item { max-height: 300px; }
 }
 
 
