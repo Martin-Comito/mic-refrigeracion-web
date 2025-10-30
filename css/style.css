@@ -152,49 +152,26 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 /* ----------------------------- */
 /* 3. CENTRADO DE IMAGENES (SOLUCIÓN) */
 /* ----------------------------- */
-/* --- ESTILOS DEL HERO DE INICIO (PANTALLA COMPLETA) --- */
-/* --- ESTILOS DEL HERO DE INICIO (PANTALLA COMPLETA) --- */
+.hero { text-align: center; margin-bottom: 3rem; }
 
-.hero {
-  width: 100%; 
-  max-height: 550px; 
-  position: relative; 
-  overflow: hidden; 
-  display: flex; /* Estos son nuevos para centrar texto */
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  color: white; 
+/* CORRECCIÓN TAMAÑO IMAGEN HERO: Aumenta el ancho máximo */
+.hero img { 
+    margin: 0 auto 1.5rem auto !important; 
+    max-height: 550px; /* Tamaño más grande para la altura */
+    width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    max-width: 900px; /* CRÍTICO: Ocupa más ancho de la página en PC */
+    border-radius: 8px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    background-image: url('img/inicio-hero.jpg'); /* Pon la ruta a tu nueva imagen */
+    background-size: cover;          /* Esto hace que la imagen cubra todo el espacio */
+    background-position: center;     /* Centra la imagen */
+    background-repeat: no-repeat;  /* Evita que se repita */
 }
+.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; justify-content: center; }
 
-.hero img {
-  position: absolute; 
-  top: 0;
-  left: 0;
-  width: 100%; 
-  height: 100%;
-  object-fit: cover; 
-  z-index: -1; 
-  filter: brightness(0.6); 
-  max-width: none; 
-  margin: 0;
-}
 
-/* Y también estas si las agregaste */
-.hero h1, .hero h2, .hero p {
-   color: #FFFFFF; 
-   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-}
-.hero h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-}
 /* ----------------------------- */
 /* 4. CARRUSEL Y PRODUCTOS (SOLUCIÓN FLECHAS Y TAMAÑO) */
 /* ----------------------------- */
