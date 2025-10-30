@@ -9,42 +9,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-           <a href="index.html"><img src="img/logo-oscuro.jpg" alt="Logo MIC Refrigeración" class="logo-img"></a>
-        </div>
-        <button class="nav-toggle" aria-label="Abrir menú">
-            ☰
-        </button>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <li><a href="nosotros.html">Sobre Mí</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+     <header>
+    <div class="logo">
+       <a href="index.html">
+           <img src="img/logoclaro.png" alt="Logo MIC Refrigeración" class="logo-img">
+       </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Abrir menú">
+        ☰
+    </button>
+    
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Sobre Mí</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <div class="utilidad-container">
+        
+        <a href="https://www.facebook.com/share/1Pe97M5frK/" target="_blank" aria-label="Página de Facebook de MIC Refrigeración" class="header-social-icon-link">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/micrefrigeracion/" target="_blank" aria-label="Perfil de Instagram de MIC Refrigeración" class="header-social-icon-link">
+            <i class="fab fa-instagram"></i>
+        </a>
+        
         <div class="theme-switcher">
             <button id="theme-toggle" aria-label="Cambiar tema">
                 🌙
             </button>
         </div>
-         <div class="header-contact">
-          <a href="https://wa.me/5492273407170" target="_blank" aria-label="WhatsApp 2273-407170">
-          <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
+    </div>
     </header>
 
     <main>
-        <h1 class="animate-fade-in">Nuestros Servicios</h1>
+         <h1 class="animate-fade-in">Nuestros Servicios</h1>
 
-       <section id="asesoramiento">
+        <section id="asesoramiento">
             <h2 class="animate-fade-in">Asesoramiento Profesional en Obra</h2>
-            
+ 
             <div class="video-wrapper animate-fade-in">
-                <video controls muted preload="metadata" width="100%" poster="img/video-preview.jpg">
+               <video controls muted preload="metadata" width="100%" poster="img/video-preview.jpg">
                     <source src="video/video1.mp4" type="video/mp4">
                     Tu navegador no soporta el elemento de video.
                 </video>
@@ -56,31 +66,31 @@
         <section id="preinstalaciones">
             <h2 class="animate-fade-in">Preinstalaciones en Obra</h2>
             <p class="animate-fade-in">Dejamos todo preparado durante la etapa de construcción o reforma para una instalación futura limpia y estética. Realizamos el tendido de cañerías de cobre de primera calidad, desagües embutidos con la pendiente correcta y la colocación de cajas de preinstalación.</p>
-            
+
             <div class="carousel-container animate-fade-in">
                 <div class="carousel-slide" data-carousel-id="preinstalacion" data-current-index="0">
-                    <img src="img/preinstalacion1.jpg" alt="Imagen adicional 5 de preinstalación" class="carousel-item">
-                    <img src="img/preinstalacion22.jpg" alt="Imagen adicional 6 de preinstalación" class="carousel-item">
-                    <img src="img/preinstalacion11.jpg" alt="Imagen adicional 7 de preinstalación" class="carousel-item">
-                    <img src="img/preinstalacion33.jpg" alt="Imagen adicional 8 de preinstalación" class="carousel-item">
+                                        <img src="img/preinstalacion1.jpg" alt="Imagen 1 de preinstalación" class="carousel-item">
+                    <img src="img/preinstalacion22.jpg" alt="Imagen 2 de preinstalación" class="carousel-item">
+                    <img src="img/preinstalacion11.jpg" alt="Imagen 3 de preinstalación" class="carousel-item">
+                    <img src="img/preinstalacion33.jpg" alt="Imagen 4 de preinstalación" class="carousel-item">
                     <img src="img/preinstalacion44.jpg" alt="Caja embutida prolija en pared para preinstalación" class="carousel-item">
                     <img src="img/preinstalacion2.jpg" alt="Insumos de cañerías de cobre y aislantes" class="carousel-item">
                     <img src="img/preinstalacion3.jpg" alt="Uso de nivel láser para preinstalación de aire acondicionado" class="carousel-item">
-                    <img src="img/pre.instalacion4.jpg" alt="Habitación con preinstalación de cañerías en obra" class="carousel-item">
+                    <img src="img/pre.instalacion4.jpg" alt="Habitación con preinstalación de cañerías en obra" class="carousel-item"> 
                 </div>
                 <button class="prev-button" data-carousel-target="preinstalacion" aria-label="Anterior">&#10094;</button>
                 <button class="next-button" data-carousel-target="preinstalacion" aria-label="Siguiente">&#10095;</button>
             </div>
             </section>
 
-        <section id="instalaciones">
+         <section id="instalaciones">
             <h2 class="animate-fade-in">Instalaciones de Aires Acondicionados</h2>
             <p class="animate-fade-in">Instalamos todo tipo de equipos: Split Pared, Cassette, Piso Techo y Sistemas Centrales por Conductos (tecnologías On/Off e Inverter). Realizamos vacío con bomba, control de fugas y garantizamos una instalación prolija y segura.</p>
             <p class="animate-fade-in important-note"><strong>Importante:</strong> La instalación por Técnico Matriculado (CAIM N° 29.235.676) mantiene la garantía oficial del fabricante. Además, ofrecemos nuestra <strong>Garantía MIC de 2 años</strong> sobre la mano de obra de instalación.</p>
-            
+
             <div class="carousel-container animate-fade-in">
                 <div class="carousel-slide" data-carousel-id="instalacion" data-current-index="0">
-                    <img src="img/instalacion11.jpg" alt="Instalación v precisa" class="carousel-item">
+                                        <img src="img/instalacion11.jpg" alt="Instalación v precisa" class="carousel-item">
                     <img src="img/instalacion22.jpg" alt="Instalación precisa de split" class="carousel-item">
                     <img src="img/instalacion33.jpg" alt="Instalación precisa de split con nivel de burbuja" class="carousel-item">
                     <img src="img/instalacion-split-nivel.jpg" alt="Instalación precisa de split con nivel de burbuja" class="carousel-item">
@@ -97,10 +107,10 @@
         <section id="reparaciones">
             <h2 class="animate-fade-in">Reparaciones Aire (Acondicionado y Heladeras)</h2>
             <p class="animate-fade-in">¿Tu equipo no enfría, no calienta, hace ruido o pierde agua? Realizamos diagnósticos precisos para identificar la falla en aires acondicionados y heladeras (familiares y comerciales). Trabajamos con repuestos originales y de primera calidad.</p>
-            
+
             <div class="carousel-container animate-fade-in">
                 <div class="carousel-slide" data-carousel-id="reparacion" data-current-index="0">
-                    <img src="img/reparacion-diagnostico.jpg" alt="Diagnóstico técnico de aire acondicionado con instrumental de medición" class="carousel-item">
+                                        <img src="img/reparacion-diagnostico.jpg" alt="Diagnóstico técnico de aire acondicionado con instrumental de medición" class="carousel-item">
                     <img src="img/reparacion1.jpg" alt="Unidad exterior BGH con manifold conectado para diagnóstico" class="carousel-item">
                     <img src="img/reparacion2.jpg" alt="Unidad interior de aire acondicionado desarmada para inspección/reparación" class="carousel-item">
                     <img src="img/reparacion4.jpg" alt="Unidad interior de split desarmada en banco de trabajo para reparación" class="carousel-item">
@@ -126,7 +136,7 @@
             </ul>
         </section>
 
-         <section id="insumos">
+        <section id="insumos">
             <h2 class="animate-fade-in">Venta de Insumos</h2>
             <img src="img/insumos-cobre.jpg" alt="Caños de cobre y aislación para instalación de aire acondicionado" class="animate-fade-in">
             <p class="animate-fade-in">Contamos con todos los insumos de calidad necesarios para la preinstalación y/o instalación de tu aire acondicionado: cañerías de cobre en diversas medidas, aislación térmica, ménsulas reforzadas, cintas, cableado, etc. Ofrecemos venta y colocación.</p>
@@ -135,28 +145,19 @@
     </main>
 
     <footer>
-    <p class="social-intro">Seguinos en nuestras redes para saber más sobre nosotros y no te pierdas ningún consejo:</p>
-    
-    <div class="social-links">
-        <a href="https://www.facebook.com/share/1Pe97M5frK/" target="_blank" aria-label="Página de Facebook de MIC Refrigeración">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/micrefrigeracion/" target="_blank" aria-label="Perfil de Instagram de MIC Refrigeración">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
-    
-    <p class="copyright">© 2025 MIC Refrigeración | Técnico Matriculado CAIM N° 29.235.676</p>
-    
-    <div class="footer-contact">
-        <a href="https://wa.me/5492273407170" target="_blank" aria-label="WhatsApp 2273-407170">
-            <i class="fab fa-whatsapp"></i> 2273-407170 
-        </a> 
-        |
-        <a href="mailto:matiasivancordoba.mic@gmail.com">matiasivancordoba.mic@gmail.com</a>
-    </div>
+        <p class="social-intro">
+            </p>
+        <div class="social-links">
+             </div>
+        
+        <p class="copyright">© 2025 MIC Refrigeración | Técnico Matriculado CAIM N° 29.235.676</p>
+        <div class="footer-contact">
+             </div>
     </footer>
 
+    <a href="https://wa.me/5492273407170?text=¡Hola!%20Quisiera%20pedir%20información%20sobre%20servicios%20de%20refrigeración." class="whatsapp-float" target="_blank" aria-label="WhatsApp directo">
+        <i class="fab fa-whatsapp"></i>
+    </a>
     <script src="js/script.js" defer></script>
 </body>
 </html>
