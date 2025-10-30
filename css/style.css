@@ -152,26 +152,62 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 /* ----------------------------- */
 /* 3. CENTRADO DE IMAGENES (SOLUCIÓN) */
 /* ----------------------------- */
-.hero { text-align: center; margin-bottom: 3rem; }
+/* --- ESTILOS DEL HERO DE INICIO (PANTALLA COMPLETA) --- */
 
-/* CORRECCIÓN TAMAÑO IMAGEN HERO: Aumenta el ancho máximo */
-.hero img { 
-    margin: 0 auto 1.5rem auto !important; 
-    max-height: 550px; /* Tamaño más grande para la altura */
-    width: 100%; 
-    height: auto; 
-    object-fit: contain; 
-    max-width: 900px; /* CRÍTICO: Ocupa más ancho de la página en PC */
-    border-radius: 8px; 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
-    background-image: url('img/inicio-hero.jpg'); /* Pon la ruta a tu nueva imagen */
-    background-size: cover;          /* Esto hace que la imagen cubra todo el espacio */
-    background-position: center;     /* Centra la imagen */
-    background-repeat: no-repeat;  /* Evita que se repita */
+.hero {
+  width: 100%; /* Ocupa el 100% del ancho de la pantalla */
+  
+  /* Ajusta la altura a tu gusto. 
+     '550px' es un buen valor, pero podés usar '600px' o '70vh' */
+  max-height: 550px; 
+  
+  position: relative; /* Para poner texto encima */
+  overflow: hidden; /* Asegura que nada se desborde */
+  
+  /* Esto centra tu texto sobre la imagen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  color: white; /* Asumiendo que el texto debe ser blanco sobre la foto */
 }
-.about-me { text-align: center; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem; justify-content: center; }
 
+.hero img {
+  position: absolute; /* Se pone DETRÁS del texto */
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  
+  /* ¡LA REGLA MÁGICA! 
+     Rellena el espacio sin deformar la imagen */
+  object-fit: cover; 
+  
+  z-index: -1; /* Envía la imagen al fondo */
+  
+  /* Opcional: Oscurece la imagen para que el texto resalte */
+  filter: brightness(0.6); 
+  
+  /* Resetea cualquier estilo viejo */
+  max-width: none; 
+  margin: 0;
+}
 
+/* Ajustes para tu texto dentro del hero */
+.hero h1, .hero h2, .hero p {
+   color: #FFFFFF; /* Fuerza el color blanco */
+   text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra para legibilidad */
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
 /* ----------------------------- */
 /* 4. CARRUSEL Y PRODUCTOS (SOLUCIÓN FLECHAS Y TAMAÑO) */
 /* ----------------------------- */
