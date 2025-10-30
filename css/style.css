@@ -183,7 +183,7 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
   
   /* ¡LA REGLA MÁGICA! 
      Rellena el espacio sin deformar la imagen */
-  object-fit: cover; 
+  object-fit: contain; 
   
   z-index: -1; /* Envía la imagen al fondo */
   
