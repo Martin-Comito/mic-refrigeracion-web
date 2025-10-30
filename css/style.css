@@ -153,52 +153,39 @@ img { max-width: 100%; height: auto; display: block; border-radius: 5px; }
 /* 3. CENTRADO DE IMAGENES (SOLUCIÓN) */
 /* ----------------------------- */
 /* --- ESTILOS DEL HERO DE INICIO (PANTALLA COMPLETA) --- */
+/* --- ESTILOS DEL HERO DE INICIO (PANTALLA COMPLETA) --- */
 
 .hero {
-  width: 100%; /* Ocupa el 100% del ancho de la pantalla */
-  
-  /* Ajusta la altura a tu gusto. 
-     '550px' es un buen valor, pero podés usar '600px' o '70vh' */
+  width: 100%; 
   max-height: 550px; 
-  
-  position: relative; /* Para poner texto encima */
-  overflow: hidden; /* Asegura que nada se desborde */
-  
-  /* Esto centra tu texto sobre la imagen */
-  display: flex;
+  position: relative; 
+  overflow: hidden; 
+  display: flex; /* Estos son nuevos para centrar texto */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 2rem;
-  color: white; /* Asumiendo que el texto debe ser blanco sobre la foto */
+  color: white; 
 }
 
 .hero img {
-  position: absolute; /* Se pone DETRÁS del texto */
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%; 
   height: 100%;
-  
-  /* ¡LA REGLA MÁGICA! 
-     Rellena el espacio sin deformar la imagen */
-  object-fit: contain; 
-  
-  z-index: -1; /* Envía la imagen al fondo */
-  
-  /* Opcional: Oscurece la imagen para que el texto resalte */
+  object-fit: cover; 
+  z-index: -1; 
   filter: brightness(0.6); 
-  
-  /* Resetea cualquier estilo viejo */
   max-width: none; 
   margin: 0;
 }
 
-/* Ajustes para tu texto dentro del hero */
+/* Y también estas si las agregaste */
 .hero h1, .hero h2, .hero p {
-   color: #FFFFFF; /* Fuerza el color blanco */
-   text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra para legibilidad */
+   color: #FFFFFF; 
+   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero h1 {
